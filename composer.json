@@ -1,0 +1,16 @@
+{
+  "name": "frank-holub/essential-addons-elementor",
+  "description": "Essential Addons for Elementor plugin mirror",
+  "keywords": ["wordpress", "plugin"],
+  "homepage": "https://github.com/frank-holub/essential-addons-elementor",
+  "authors": [
+    {
+      "name": "Essential Addons",
+      "homepage": "https://essential-addons.com/elementor/"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.4"
+  }
+}
