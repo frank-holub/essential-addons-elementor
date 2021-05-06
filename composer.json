@@ -12,6 +12,7 @@
   "type": "wordpress-plugin",
   "require": {
     "php": ">=5.4",
+    "johnpbloch/wordpress-core": "*",
     "composer/installers": "^1.0"
   }
 }
