@@ -4,7 +4,7 @@ namespace Essential_Addons_Elementor\Pro\Elements;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
 use Elementor\Repeater;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
@@ -600,6 +600,32 @@ class Flip_Carousel extends Widget_Base {
 			[
 				'label' => esc_html__( 'Color &amp; Typography', 'essential-addons-elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE
+			]
+		);
+
+        $this->add_responsive_control(
+			'eael__filp_carousel_content_alignment',
+			[
+				'label'       => esc_html__('Content Alignment', 'essential-addons-elementor'),
+				'type'        => Controls_Manager::CHOOSE,
+				'options'     => [
+					'left' => [
+						'title' => esc_html__('Left', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => esc_html__('Right', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'   => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .flip-carousel-text' => 'text-align: {{VALUE}}',
+				],
 			]
 		);
 
