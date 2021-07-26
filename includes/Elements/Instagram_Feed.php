@@ -166,14 +166,14 @@ class Instagram_Feed extends Widget_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .eael-instafeed-square-img .eael-instafeed-item img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; object-fit: cover;',
+                    '{{WRAPPER}} .eael-instafeed-square-img .eael-instafeed-item img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; object-fit: fill;',
                 ],
                 'condition' => [
                     'eael_instafeed_force_square' => 'yes',
                 ],
             ]
         );
-
+        
         $this->end_controls_section();
 
         $this->start_controls_section(

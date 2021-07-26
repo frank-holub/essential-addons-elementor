@@ -11,6 +11,7 @@ use \Elementor\Group_Control_Typography;
 use \Elementor\Utils;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Widget_Base;
+use Essential_Addons_Elementor\Classes\Helper as HelperClass;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
@@ -743,12 +744,12 @@ class Flip_Carousel extends Widget_Base {
 								<img src="<?php echo $slides['eael_flip_carousel_slide']['url'] ?>" alt="<?php echo esc_attr($image_alt_text); ?>">
 							</a>
 							<?php if( $slides['eael_flip_carousel_slide_text'] !='' ) : ?>
-								<p class="flip-carousel-text"><?php echo esc_html__( $slides['eael_flip_carousel_slide_text'] ); ?></p>
+								<p class="flip-carousel-text"><?php echo HelperClass::eael_wp_kses($slides['eael_flip_carousel_slide_text'] ); ?></p>
 							<?php endif; ?>
 						<?php else: ?>
 							<img src="<?php echo $slides['eael_flip_carousel_slide']['url'] ?>" alt="<?php echo esc_attr($image_alt_text); ?>">
 							<?php if( $slides['eael_flip_carousel_slide_text'] !='' ) : ?>
-								<p class="flip-carousel-text"><?php echo esc_html__( $slides['eael_flip_carousel_slide_text'] ); ?></p>
+								<p class="flip-carousel-text"><?php echo HelperClass::eael_wp_kses($slides['eael_flip_carousel_slide_text'] ); ?></p>
 							<?php endif; ?>
 						<?php endif; ?>
 

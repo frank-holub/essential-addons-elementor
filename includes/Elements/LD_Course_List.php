@@ -1880,7 +1880,7 @@ class LD_Course_List extends Widget_Base
         return array_intersect($course_ids, ld_get_mycourses(get_current_user_id()));
     }
 
-    protected function get_controlled_short_desc($desc = '', $length)
+    protected function get_controlled_short_desc($desc = '', $length = 0)
     {
         if ($desc && $length) {
 

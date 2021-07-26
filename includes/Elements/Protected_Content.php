@@ -923,8 +923,8 @@ class Protected_Content extends Widget_Base {
 			return false;
 		}
 
-		$user_role = reset( wp_get_current_user()->roles );
-		return in_array( $user_role, (array)$this->get_settings( 'eael_protected_content_role' ) );
+		$user_role = wp_get_current_user()->roles ;
+		return !empty( array_intersect( $user_role,(array)$this->get_settings( 'eael_protected_content_role' ) ));
 	}
 
 	protected function eael_render_message( $settings ) {

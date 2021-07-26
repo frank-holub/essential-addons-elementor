@@ -1042,7 +1042,7 @@ class Divider extends Widget_Base
 	/**
 	 * Render divider widget output in the editor.
 	 */
-	protected function _content_template()
+	protected function content_template()
 	{
 	}
 }

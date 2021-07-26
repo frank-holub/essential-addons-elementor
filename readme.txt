@@ -1,8 +1,8 @@
 === Essential Addons for Elementor - Pro ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
-Tested up to: 5.7.1
-Stable tag: 4.4.0
+Tested up to: 5.7.2
+Stable tag: 4.4.5
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -87,6 +87,46 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 4.4.5 - 18/07/2021 =
+
+- Fixed: EA Lightbox & Modal | linked to the same post
+- Fixed: EA Image Hotspots | Safari browser crashing when links are set to "Open in New Window"
+- Fixed : EA Creative Buttons | Style controls not working properly for "Winona" & "Rayen" effects 
+- Fixed: EA Woo Product Carousel | swiperslider conflict with Jetpack
+- Few minor bug fix and improvements
+
+= 4.4.4 - 07/07/2021 =
+
+- Fixed: EA Interactive Cards | no option to change heading tag for Counter text
+- Fixed: EA Image Comparison | On Hover setting not working on Frontend
+- Few minor bug fix and improvements
+
+= 4.4.3 - 29/06/2021 =
+
+- Fixed: EA Parallax | Broken in Safari browser
+- Fixed: EA Testimonial Slider | Image not being centered in some Styles
+- Fixed: EA Image Hotspot | Showing black border when the tooltip is enabled
+- Improved: EA Woo Product Slider | Added buttons shadow, image size change option and add to cart style options for preset 3
+- Improved: EA Team Member Carousel | Added Custom Social Icon option
+- Few minor bug fix and improvements
+
+= 4.4.2 - 15/06/2021 =
+- Improved: WPML Compatibility
+- Fixed: EA Smart Post List | Filtering not working
+- Fixed: EA Content Protection | Not working properly if a certain user has multiple roles
+- Few minor bug fix and improvements
+
+= 4.4.1 - 07/06/2021 =
+- Removed: Elementor  deprecation methods
+- Added: Compatibility with PHP 8.0
+- Improved: EA Team Member Carousel | Added Snapchat & XING Social link options
+- Improved: Added Target_Blank options in post widgets
+- Improved: EA Testimonial Slider | Move navigation arrows outside of the box
+- Fixed: EA Post Block | Hover Card Style not working
+- Fixed: EA Dual Color Heading |Font Gradient color not changing
+- Fixed: EA Woo Product Slider | Quick View not showing properly
+- Few minor bug fix and improvements
 
 = 4.4.0 - 09/05/2021 =
 - Added: EA Woo Product Carousel

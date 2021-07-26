@@ -1735,9 +1735,12 @@
   }
 }
 .eael-popup-details-render {
+  width: 80%;
+  max-width: 900px;
   /* Safari */
 }
 .eael-popup-details-render .eael-preloader {
+  margin: 0 auto;
   border: 5px solid #f3f3f3;
   border-radius: 50%;
   border-top: 5px solid #3498db;

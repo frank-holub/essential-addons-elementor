@@ -744,7 +744,7 @@ class One_Page_Navigation extends Widget_Base
     /**
      * Render one page navigation widget output in the editor.
      */
-    protected function _content_template()
+    protected function content_template()
     {
     }
 }

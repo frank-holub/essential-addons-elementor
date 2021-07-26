@@ -119,6 +119,26 @@ class Interactive_Card extends Widget_Base
 		);
 
 		$this->add_control(
+			'counter_html_tag',
+			[
+				'label'   => __( 'Counter HTML Tag', 'essential-addons-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'h1',
+				'options' => [
+					'h1'   => __( 'H1', 'essential-addons-elementor' ),
+					'h2'   => __( 'H2', 'essential-addons-elementor' ),
+					'h3'   => __( 'H3', 'essential-addons-elementor' ),
+					'h4'   => __( 'H4', 'essential-addons-elementor' ),
+					'h5'   => __( 'H5', 'essential-addons-elementor' ),
+					'h6'   => __( 'H6', 'essential-addons-elementor' ),
+					'div'  => __( 'div', 'essential-addons-elementor' ),
+					'span' => __( 'span', 'essential-addons-elementor' ),
+					'p'    => __( 'p', 'essential-addons-elementor' ),
+				],
+			]
+		);
+
+		$this->add_control(
 			'eael_interactive_card_front_panel_title',
 			[
 				'label' => esc_html__('Title', 'essential-addons-elementor'),
@@ -1897,9 +1917,11 @@ class Interactive_Card extends Widget_Base
 				<div class="front-content front-text-content">
 					<div class="image-screen">
 						<div class="header">
-							<?php if (!empty($settings['eael_interactive_card_front_panel_counter'])) : ?>
-								<h1 class="card-number"><?php echo $settings['eael_interactive_card_front_panel_counter']; ?></h1>
-							<?php endif; ?>
+							<?php if ( ! empty( $settings['eael_interactive_card_front_panel_counter'] ) ) {
+								printf( '<%1$s class="card-number">', $settings['counter_html_tag'] );
+								echo $settings['eael_interactive_card_front_panel_counter'];
+								printf( '</%1$s>', $settings['counter_html_tag'] );
+							} ?>
 							<?php if (!empty($settings['eael_interactive_card_front_panel_title'])) : ?>
 								<h2 class="title"><?php echo $settings['eael_interactive_card_front_panel_title']; ?></h2>
 							<?php endif; ?>

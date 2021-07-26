@@ -774,8 +774,8 @@ class Content_Protection {
 			return;
 		}
 
-		$user_role = reset( wp_get_current_user()->roles );
-		return in_array( $user_role, (array)$settings[ 'eael_ext_content_protection_role' ] );
+        $user_role = wp_get_current_user()->roles ;
+        return !empty( array_intersect( $user_role,(array)$settings['eael_ext_content_protection_role'] ));
 	}
 
 	/**

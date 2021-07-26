@@ -326,6 +326,68 @@ class Team_Member_Carousel extends Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'xing_url',
+            [
+                'name'        => 'xing_url',
+                'label'       => __('XING', 'essential-addons-elementor'),
+                'type'        => Controls_Manager::TEXT,
+                'dynamic'     => [
+                    'active'     => true,
+                    'categories' => [
+                        TagsModule::POST_META_CATEGORY,
+                    ],
+                ],
+                'description' => __('Enter XING profile URL of team member', 'essential-addons-elementor'),
+            ]
+        );
+
+        $repeater->add_control(
+            'snapchat_url',
+            [
+                'name'        => 'snapchat_url',
+                'label'       => __('Snapchat', 'essential-addons-elementor'),
+                'type'        => Controls_Manager::TEXT,
+                'dynamic'     => [
+                    'active'     => true,
+                    'categories' => [
+                        TagsModule::POST_META_CATEGORY,
+                    ],
+                ],
+                'description' => __('Enter Snapchat profile URL of team member', 'essential-addons-elementor'),
+            ]
+        );
+
+        $repeater->add_control(
+            'custom_url',
+            [
+                'name'        => 'custom_url',
+                'label'       => __('Custom URL', 'essential-addons-elementor'),
+                'type'        => Controls_Manager::TEXT,
+                'dynamic'     => [
+                    'active'     => true,
+                    'categories' => [
+                        TagsModule::POST_META_CATEGORY,
+                    ],
+                ],
+                'description' => __('Enter Custom URL of team member', 'essential-addons-elementor'),
+            ]
+        );
+
+	    $repeater->add_control(
+		    'custom_icon',
+		    [
+			    'label' => esc_html__( 'Custom Icon', 'essential-addons-elementor'),
+			    'type' => Controls_Manager::ICONS,
+			    'skin' => 'inline',
+			    'label_block' => false,
+			    'exclude_inline_options' => [ 'svg' ],
+			    'default' => [
+				    'value' => 'fab fa-wordpress',
+				    'library' => 'fa-brands',
+			    ],
+		    ]
+	    );
 
         $this->add_control(
             'team_member_details',
@@ -2431,6 +2493,10 @@ class Team_Member_Carousel extends Widget_Base
         $youtube_url = $item['youtube_url'];
         $pinterest_url = $item['pinterest_url'];
         $dribbble_url = $item['dribbble_url'];
+        $xing_url = $item['xing_url'];
+        $snapchat_url = $item['snapchat_url'];
+        $custom_url = $item['custom_url'];
+        $custom_icon = empty( $item['custom_icon']['value'] ) ? '' : $item['custom_icon']['value'];
         ?>
         <div class="eael-tm-social-links-wrap">
             <ul class="eael-tm-social-links">
@@ -2461,6 +2527,15 @@ class Team_Member_Carousel extends Widget_Base
                 }
                 if ($dribbble_url) {
                     printf('<li><a href="%1$s" target="_blank"><span class="eael-tm-social-icon-wrap"><span class="eael-tm-social-icon fa fa-dribbble"></span></span></a></li>', esc_url($dribbble_url));
+                }
+                if ($xing_url) {
+                    printf('<li><a href="%1$s" target="_blank"><span class="eael-tm-social-icon-wrap"><span class="eael-tm-social-icon fa fa-xing"></span></span></a></li>', esc_url($xing_url));
+                }
+                if ($snapchat_url) {
+                    printf('<li><a href="%1$s" target="_blank"><span class="eael-tm-social-icon-wrap"><span class="eael-tm-social-icon fa fa-snapchat"></span></span></a></li>', esc_url($snapchat_url));
+                }
+                if ( $custom_url ) {
+                    printf( '<li><a href="%1$s" target="_blank"><span class="eael-tm-social-icon-wrap"><span class="eael-tm-social-icon %2$s"></span></span></a></li>', esc_url( $custom_url ), esc_attr( $custom_icon ) );
                 }
                 ?>
             </ul>
@@ -2516,7 +2591,7 @@ class Team_Member_Carousel extends Widget_Base
 <?php }
     }
 
-    protected function _content_template()
+    protected function content_template()
     {
     }
 }

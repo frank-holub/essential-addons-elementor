@@ -151,7 +151,7 @@ class Static_Product extends Widget_Base
                 'label'       => __('Product Heading', 'essential-addons-elementor'),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
-                'default'     => 'Product Name',
+                'default'     => __('Product Name','essential-addons-elementor'),
                 'placeholder' => __('Enter heading for the product', 'essential-addons-elementor'),
                 'title'       => __('Enter heading for the product', 'essential-addons-elementor'),
                 'dynamic'     => ['active' => true],

@@ -989,10 +989,10 @@ class Image_Hot_Spots extends Widget_Base
                             if ($item['hotspot_type'] == 'icon') {
                                 if (isset($icon['url'])) {
                                     printf('<span class="eael-hotspot-icon-wrap">
-                                        <img class="eael-hotspot-icon tooltip hotspot-svg-icon" src="%1$s" alt="%2$s" />
+                                        <img class="eael-hotspot-icon eael-hotspot-tooltip hotspot-svg-icon" src="%1$s" alt="%2$s" />
                                         </span>', esc_url($icon['url']), esc_attr(get_post_meta($icon['id'], '_wp_attachment_image_alt', true)));
                                 } else {
-                                    printf('<span class="eael-hotspot-icon-wrap"><span class="eael-hotspot-icon tooltip %1$s"></span></span>', esc_attr($icon));
+                                    printf('<span class="eael-hotspot-icon-wrap"><span class="eael-hotspot-icon eael-hotspot-tooltip %1$s"></span></span>', esc_attr($icon));
                                 }
                             } elseif ($item['hotspot_type'] == 'text') {
                                 printf('<span class="eael-hotspot-icon-wrap"><span class="eael-hotspot-text">%1$s</span></span>', esc_attr($item['hotspot_text']));

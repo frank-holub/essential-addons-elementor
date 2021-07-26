@@ -1233,5 +1233,5 @@ class Counter extends Widget_Base {
     /**
 	 * Render counter widget output in the editor.
 	 */
-    protected function _content_template() { }
+    protected function content_template() { }
 }

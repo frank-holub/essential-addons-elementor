@@ -181,10 +181,10 @@ class Dynamic_Filterable_Gallery extends Widget_Base
             [
                 'label' => __('Show Title', 'essential-addons-elementor'),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'true',
+                'default' => 'yes',
                 'label_on' => esc_html__('Yes', 'essential-addons-elementor'),
                 'label_off' => esc_html__('No', 'essential-addons-elementor'),
-                'return_value' => 'true',
+                'return_value' => 'yes',
             ]
         );
 
@@ -193,10 +193,10 @@ class Dynamic_Filterable_Gallery extends Widget_Base
             [
                 'label' => __('Show Content', 'essential-addons-elementor'),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'true',
+                'default' => 'yes',
                 'label_on' => esc_html__('Yes', 'essential-addons-elementor'),
                 'label_off' => esc_html__('No', 'essential-addons-elementor'),
-                'return_value' => 'true',
+                'return_value' => 'yes',
             ]
         );
 
@@ -382,7 +382,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'dynamic' => [
                     'active' => true,
                 ],
-                'default' => 'Load More',
+                'default' => __('Load More','essential-addons-elementor'),
                 'condition' => [
                     'show_load_more' => '1',
                 ],
@@ -437,6 +437,163 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'condition' => [
                     'show_load_more' => '1',
                     'eael_fg_loadmore_btn_text!' => '',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        /**
+         * Content Tab: Links
+         */
+
+        $this->start_controls_section(
+            'section_dynamic_gallery_links',
+            [
+                'label' => __('Links', 'essential-addons-elementor'),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'eael_fg_grid_style',
+                            'operator' => '==',
+                            'value' => 'eael-cards',
+                        ],
+                        [
+                            'relation' => 'and',
+                            'terms' => [
+                                [
+                                   'name' => 'eael_fg_grid_style',
+                                   'operator' => '==',
+                                   'value' => 'eael-hoverer',
+                                ],
+                                [
+                                   'name' => 'eael_fg_show_popup',
+                                   'operator' => '!=',
+                                   'value' => '',
+                                ],
+                                [
+                                    'name' => 'eael_fg_show_popup_styles',
+                                    'operator' => '!=',
+                                    'value' => 'media',
+                                 ],
+                                                      
+                            ],
+                        ],
+                    ],       
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'attachment_link',
+            [
+                'label' => __('Link', 'essential-addons-elementor'),
+                'type' => Controls_Manager::HEADING,
+                'conditions' => $this->title_condition(),
+            ]
+        );
+
+        $this->add_control(
+            'link_nofollow',
+            [
+                'label' => __('No Follow', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'conditions' => $this->title_condition(),
+            ]
+        );
+
+        $this->add_control(
+            'link_target_blank',
+            [
+                'label' => __('Target Blank', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'conditions' => $this->title_condition(),
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_control(
+            'title_link',
+            [
+                'label' => __('Title', 'essential-addons-elementor'),
+                'type' => Controls_Manager::HEADING,
+                'condition' => [
+                    'eael_show_hover_title' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title_link_nofollow',
+            [
+                'label' => __('No Follow', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'condition' => [
+                    'eael_show_hover_title' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title_link_target_blank',
+            [
+                'label' => __('Target Blank', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'condition' => [
+                    'eael_show_hover_title' => 'yes',
+                ],
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_control(
+            'read_more_link',
+            [
+                'label' => __('Read More', 'essential-addons-elementor'),
+                'type' => Controls_Manager::HEADING,
+                'condition' => [
+                    'eael_show_hover_excerpt' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_link_nofollow',
+            [
+                'label' => __('No Follow', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'condition' => [
+                    'eael_show_hover_excerpt' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_link_target_blank',
+            [
+                'label' => __('Target Blank', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'essential-addons-elementor'),
+                'label_off' => __('No', 'essential-addons-elementor'),
+                'return_value' => 'true',
+                'condition' => [
+                    'eael_show_hover_excerpt' => 'yes',
                 ],
             ]
         );
@@ -1130,6 +1287,37 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         );
 
         $this->add_control(
+            'eael_fg_item_caption_readmore_style',
+            [
+                'label' => esc_html__('Caption Read More', 'essential-addons-elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'eael_fg_grid_style' => 'eael-hoverer'
+            ]
+        );
+
+        $this->add_control(
+            'eael_fg_item_caption_readmore_color',
+            [
+                'label' => esc_html__('Color', 'essential-addons-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .caption .item-content .eael_post_excerpt_read_more' => 'color: {{VALUE}};',
+                    'eael_fg_grid_style' => 'eael-hoverer'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'eael_fg_item_caption_readmore_typography',
+                'selector' => '{{WRAPPER}} .caption .item-content .eael_post_excerpt_read_more',
+                'eael_fg_grid_style' => 'eael-hoverer'
+            ]
+        );
+
+        $this->add_control(
             'eael_fg_item_caption_hover_icon',
             [
                 'label' => esc_html__('Hover Icon', 'essential-addons-elementor'),
@@ -1467,6 +1655,42 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         do_action('eael/controls/load_more_button_style', $this);
     }
 
+    protected function title_condition(){
+        return  [
+            'relation' => 'or',
+            'terms' => [
+                [
+                    'name' => 'eael_fg_grid_style',
+                    'operator' => '==',
+                    'value' => 'eael-hoverer',
+                ],
+                [
+                    'relation' => 'and',
+                    'terms' => [
+                        [
+                            'name' => 'eael_fg_grid_style',
+                            'operator' => '==',
+                            'value' => 'eael-cards',
+                        ],
+                        [
+                            'name' => 'eael_fg_show_popup',
+                            'operator' => '!=',
+                            'value' => '',
+                        ],
+                        [
+                            'name' => 'eael_fg_show_popup_styles',
+                            'operator' => '!=',
+                            'value' => 'media',
+                        ],
+                                                
+                    ],  
+                ]  
+                                        
+            ],
+                        
+        ];
+    }
+
     protected function render()
     {
         $settings = $this->get_settings_for_display();
@@ -1557,6 +1781,8 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         // normalize settigns for load more
         $settings['layout_mode'] = 'masonry'; // in master load more has static masonry text in layout_mode attr in loadmore button.
         $settings['show_load_more_text'] = $settings['eael_fg_loadmore_btn_text'];
+        $template = $this->get_template($settings['eael_dynamic_template_Layout']);
+        $settings['loadable_file_name'] = $this->get_filename_only($template);
 
         if (method_exists($this, 'print_load_more_button')) {
             $this->print_load_more_button($settings, $args, 'pro');

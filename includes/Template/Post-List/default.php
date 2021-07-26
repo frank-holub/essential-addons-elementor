@@ -26,7 +26,7 @@ echo '<div class="eael-post-list-post ' . (has_post_thumbnail() ? '' : 'eael-emp
                     echo '<img src="' . wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['eael_post_featured_image_size']) . '" alt="' .
                          esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true)) . '">';
                 }
-                echo '<a href="' . get_the_permalink() . '"></a>
+                echo '<a href="' . get_the_permalink() . '"' . $link_settings['image_link_nofollow'] . '' . $link_settings['image_link_target_blank'] . '></a>
             </div>';
         }
 
@@ -47,7 +47,7 @@ echo '<div class="eael-post-list-post ' . (has_post_thumbnail() ? '' : 'eael-emp
 			$validate_tag = Helper::eael_pro_validate_html_tag($settings['eael_post_list_title_tag']);
             if ($settings['eael_post_list_post_title'] == 'yes' && !empty($settings['eael_post_list_title_tag'])) {
                 echo "<{$validate_tag} class=\"eael-post-list-title\">";
-                    echo '<a href="' . get_the_permalink() . '">' . get_the_title() . '</a>';
+                    echo '<a href="' . get_the_permalink() . '"' . $link_settings['title_link_nofollow'] . '' . $link_settings['title_link_target_blank'] . '>' . get_the_title() . '</a>';
                 echo "</{$validate_tag}>";
             }
 
@@ -65,7 +65,7 @@ echo '<div class="eael-post-list-post ' . (has_post_thumbnail() ? '' : 'eael-emp
 
             if ( isset($settings['eael_show_read_more_button']) && $settings['eael_show_read_more_button'] ) {
 
-                echo '<a href="' . get_the_permalink() . '" class="eael-post-elements-readmore-btn">' . esc_attr($settings['eael_post_list_read_more_text']) . '</a>';
+                echo '<a href="' . get_the_permalink() . '" class="eael-post-elements-readmore-btn"' . $link_settings['read_more_link_nofollow'] . '' . $link_settings['read_more_link_target_blank'] . '>' . esc_attr($settings['eael_post_list_read_more_text']) . '</a>';
 
             }
 
