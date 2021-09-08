@@ -28,6 +28,13 @@
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
+.elementor-widget-eael-testimonial-slider .eael-testimonial-slider .swiper-container {
+  width: 100%;
+}
+.elementor-widget-eael-testimonial-slider .eael-testimonial-slider .swiper-container .swiper-button-prev:after,
+.elementor-widget-eael-testimonial-slider .eael-testimonial-slider .swiper-container .swiper-button-next:after {
+  content: none;
+}
 .elementor-widget-eael-testimonial-slider .testimonial-star-rating {
   padding: 0;
   margin: 0;

@@ -1,8 +1,8 @@
 === Essential Addons for Elementor - Pro ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
-Tested up to: 5.7.2
-Stable tag: 4.4.5
+Tested up to: 5.8
+Stable tag: 4.4.9
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -87,6 +87,40 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 4.4.9 - 01/09/2021 =
+
+- Fixed: EA Smart Post List | Date Format not getting from WordPress Setting
+- Fixed: Clicking on the arrow stopping all the Sliders
+- Fixed: EA Offcanvas Menu | not working on "question marked" URL
+- Fixed: EA Lightbox & Modal | not working if image is selected as trigger.
+- Few minor bug fix & improvements
+
+= 4.4.8 - 19/08/2021 =
+
+- Fixed: EA Toggle | Secondd toggle doesn't work if Nested template is used
+- Fixed: EA Smart Post List | Manual ordering not working
+- Fixed: EA Smart Post List | Styling issue on 9th post
+- Fixed: EA Lightbox & Modal | Not working with icon/image type
+- Few minor bug fix and improvements
+
+= 4.4.7 - 08/08/2021 =
+
+- Fixed: EA Learndash Course List | throwing PHP Warning
+- Fixed: EA Smart Post List | Custom Template not loading from theme
+- Added: EA Team Member Carousel | Options to adjust height and width
+- Removed: Unused TweenMax library from EA Parallax
+- Few minor bug fix and improvements
+
+= 4.4.6 - 27/07/2021 =
+
+- Fixed: EA Smart Post List | 'Show Category' option not functioning properly
+- Fixed: EA Woo Product Slider | Draft products being displayed on Edit Mode
+- Fixed: EA Woo Product Slider | 'Quick View' popup not showing properly when multiple images are used
+- Fixed: EA Dynamic Gallery | "Load More" not working when custom template is used from Theme
+- Fixed: EA Woo Check Out | Broken 'Multi-Steps' layout in Neve theme
+- Fixed: Conflict with Jetpack with Slider elements
+- Few minor bug fix and improvements
 
 = 4.4.5 - 18/07/2021 =
 

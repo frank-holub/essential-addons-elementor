@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 
 
-$category = wp_get_object_terms( get_the_ID(), get_object_taxonomies( get_post_type( get_the_ID() ) ) );
+$category = get_the_category();
 $cat_name = $cat_id = null;
 $show_cat = ($settings['eael_post_list_post_cat'] != '');
 if (!empty($category[0])) {
@@ -53,7 +53,7 @@ echo '<div class="eael-post-list-post ' . (has_post_thumbnail() ? '' : 'eael-emp
 
             if ($settings['eael_post_list_post_meta'] === 'yes') {
                 echo '<div class="meta">
-                    <span><i class="far fa-calendar-alt"></i> ' . get_the_date('d M Y') . '</span>
+                    <span><i class="far fa-calendar-alt"></i> ' . get_the_date(get_option('date_format')) . '</span>
                 </div>';
             }
 
@@ -79,7 +79,7 @@ echo '<div class="eael-post-list-post ' . (has_post_thumbnail() ? '' : 'eael-emp
 
                             <div class="author-info">
                                 <h5>' . get_the_author_posts_link() . '</h5>
-                                <a href="' . get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')) . '"><p>' . get_the_date('d.m.y') . '</p></a>
+                                <a href="' . get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')) . '"><p>' . get_the_date(get_option('date_format')) . '</p></a>
                             </div>
                         </div>';
                     }

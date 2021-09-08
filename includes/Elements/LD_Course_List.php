@@ -1948,15 +1948,13 @@ class LD_Course_List extends Widget_Base
 
                 $legacy_meta = get_post_meta($course->ID, '_sfwd-courses', true);
                 $users = get_post_meta($course->ID, 'course_access_list', true);
-                if (is_array($users)) {
-                    $users = explode(',', $users);
-                } else {
-                    $users = [];
-                }
+	            if ( ! is_array( $users ) ) {
+		            $users = explode( ',', $users );
+	            }
                 $short_desc = get_post_meta($course->ID, '_learndash_course_grid_short_description', true);
                 $image = wp_get_attachment_image_src(get_post_thumbnail_id($course->ID), 'large');
                 $image_alt = get_post_meta(get_post_thumbnail_id($course->ID), '_wp_attachment_image_alt', true);
-                $access_list = count($users);
+	            $access_list = count( $users );
                 $button_text = get_post_meta($course->ID, '_learndash_course_grid_custom_button_text', true);
                 $tags = wp_get_post_terms($course->ID, 'ld_course_tag');
                 $excerpt_length = $settings['excerpt_length'] ? $settings['excerpt_length'] : null;

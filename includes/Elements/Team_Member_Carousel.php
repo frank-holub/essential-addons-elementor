@@ -2,6 +2,8 @@
 
 namespace Essential_Addons_Elementor\Pro\Elements;
 
+use Elementor\Control_Media;
+use Elementor\Group_Control_Image_Size;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
@@ -445,6 +447,14 @@ class Team_Member_Carousel extends Widget_Base
                 'label' => __('Team Member Settings', 'essential-addons-elementor'),
             ]
         );
+
+	    $this->add_group_control(
+		    Group_Control_Image_Size::get_type(),
+		    [
+			    'name' => 'image_size',
+			    'default' => 'full',
+		    ]
+	    );
 
         $this->add_control(
             'name_html_tag',
@@ -1019,6 +1029,29 @@ class Team_Member_Carousel extends Widget_Base
                 ],
                 'selectors'      => [
                     '{{WRAPPER}} .eael-tm-image img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'member_image_height',
+            [
+                'label'          => __('Image Height', 'essential-addons-elementor'),
+                'type'           => Controls_Manager::SLIDER,
+                'size_units'     => ['%', 'px'],
+                'range'          => [
+                    'px' => [
+                        'max' => 800,
+                    ],
+                ],
+                'tablet_default' => [
+                    'unit' => 'px',
+                ],
+                'mobile_default' => [
+                    'unit' => 'px',
+                ],
+                'selectors'      => [
+                    '{{WRAPPER}} .eael-tm-image img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -2358,7 +2391,15 @@ class Team_Member_Carousel extends Widget_Base
                         <div class="swiper-slide">
                             <div class="eael-tm">
                                 <div class="eael-tm-image">
-                                    <?php echo '<img src="' . $item['team_member_image']['url'] . '" alt="' . esc_attr(get_post_meta($item['team_member_image']['id'], '_wp_attachment_image_alt', true)) . '">'; ?>
+                                    <?php
+                                    $image_url = Group_Control_Image_Size::get_attachment_image_src( $item['team_member_image']['id'], 'image_size', $settings );
+
+                                    if ( $image_url ) {
+	                                    echo $image_html = '<img src="' . esc_url( $image_url ) . '"alt="' . esc_attr(get_post_meta($item['team_member_image']['id'], '_wp_attachment_image_alt', true)) . '">';
+                                    } else {
+	                                    echo $image_html = '<img src="' . esc_url( $item['team_member_image']['url'] ) .'">';
+                                    }
+                                    ?>
                                     <?php if ($settings['overlay_content'] !== 'none') : ?>
                                         <div class="eael-tm-overlay-content-wrap">
                                             <div class="eael-tm-content">

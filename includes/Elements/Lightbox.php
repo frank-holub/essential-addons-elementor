@@ -1990,17 +1990,17 @@ class Lightbox extends Widget_Base
 					} else if ('icon' ==  $settings['trigger_type']) {
 
                         if ( $trigger_icon_migrated || $trigger_icon_is_new ) {
-                            echo '<span class="eael-trigger-icon eael-trigger-svg-icon eael-modal-popup-link eael-modal-popup-link-' . esc_attr($widget_id) .'">';
+                            echo '<span class="eael-trigger-icon eael-trigger-svg-icon eael-modal-popup-link eael-modal-popup-link-' . esc_attr($uniq_id) .'">';
                             Icons_Manager::render_icon( $settings['trigger_only_icon_new'] );
                             echo '</span>';
                         } else if (!empty($settings['trigger_only_icon'])) {
-                            printf('<i class="eael-trigger-icon eael-modal-popup-link %1$s %2$s" aria-hidden="true"></i>', $settings['trigger_only_icon'], 'eael-modal-popup-link-' . esc_attr($widget_id));
+                            printf('<i class="eael-trigger-icon eael-modal-popup-link %1$s %2$s" aria-hidden="true"></i>', $settings['trigger_only_icon'], 'eael-modal-popup-link-' . esc_attr($uniq_id));
                         }
 
 					} else if ('image' == $settings['trigger_type']) {
 						$trigger_image = $settings['trigger_only_image'];
 						if (!empty($trigger_image['url'])) {
-							printf('<img class="eael-trigger-image eael-modal-popup-link %1$s" src="%2$s" alt="%3$s">', 'eael-modal-popup-link-' . esc_attr($widget_id), esc_url($trigger_image['url']), esc_attr(get_post_meta($trigger_image['id'], '_wp_attachment_image_alt', true)));
+							printf('<img class="eael-trigger-image eael-modal-popup-link %1$s" src="%2$s" alt="%3$s">', 'eael-modal-popup-link-' . esc_attr($uniq_id), esc_url($trigger_image['url']), esc_attr(get_post_meta($trigger_image['id'], '_wp_attachment_image_alt', true)));
 						}
 					}
 				}

@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 
 
-$category = wp_get_object_terms( get_the_ID(), get_object_taxonomies( get_post_type( get_the_ID() ) ) );
+$category = get_the_category();
 $cat_name = $cat_id = null;
 $show_cat = ($settings['eael_post_list_post_cat'] != '');
 if (!empty($category[0])) {
@@ -36,14 +36,6 @@ if ($settings['eael_post_list_layout_type'] == 'default' && $cat_is_ready) {
                 </div>';
 }
 
-if ($settings['eael_post_list_layout_type'] == 'advanced' && ($iterator == 8) && $cat_is_ready) {
-    echo '<div class="boxed-meta">
-                    <div class="meta-categories">
-                        <a href="' . esc_url(get_category_link($cat_id)) . '">' . esc_html($cat_name) . '</a>
-                    </div>
-                </div>';
-}
-
 if ($settings['eael_post_list_post_title'] == 'yes' && !empty($settings['eael_post_list_title_tag'])) {
     $validate_tag = Helper::eael_pro_validate_html_tag($settings['eael_post_list_title_tag']);
     echo "<{$validate_tag} class=\"eael-post-list-title\">";
@@ -53,7 +45,7 @@ if ($settings['eael_post_list_post_title'] == 'yes' && !empty($settings['eael_po
 
 if ($settings['eael_post_list_post_meta'] === 'yes') {
     echo '<div class="meta">
-                    <span><i class="far fa-calendar-alt"></i> ' . get_the_date('d M Y') . '</span>
+                    <span><i class="far fa-calendar-alt"></i> ' . get_the_date(get_option('date_format')) . '</span>
                 </div>';
 }
 
@@ -79,20 +71,19 @@ if ($settings['eael_post_list_layout_type'] == 'advanced') {
 
                             <div class="author-info">
                                 <h5>' . get_the_author_posts_link() . '</h5>
-                                <a href="' . get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')) . '"><p>' . get_the_date('d.m.y') . '</p></a>
+                                <a href="' . get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')) . '"><p>' . get_the_date(get_option('date_format')) . '</p></a>
                             </div>
                         </div>';
     }
 
-    if ($iterator != 8) {
-        if ($cat_is_ready) {
-            echo '<div class="meta-categories">
-                                <div class="meta-cats-wrap">
-                                    <a href="' . esc_url(get_category_link($cat_id)) . '">' . esc_html($cat_name) . '</a>
-                                </div>
-                            </div>';
-        }
-    }
+	if ( $cat_is_ready ) {
+		echo '<div class="meta-categories">
+                <div class="meta-cats-wrap">
+                    <a href="' . esc_url( get_category_link( $cat_id ) ) . '">' . esc_html( $cat_name ) . '</a>
+                </div>
+            </div>';
+	}
+
     echo '</div>';
 }
 echo '</div>';

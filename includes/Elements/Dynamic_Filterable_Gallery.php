@@ -1784,9 +1784,11 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         $template = $this->get_template($settings['eael_dynamic_template_Layout']);
         $settings['loadable_file_name'] = $this->get_filename_only($template);
 
-        if (method_exists($this, 'print_load_more_button')) {
-            $this->print_load_more_button($settings, $args, 'pro');
-        }
+
+	    if ( method_exists( $this, 'print_load_more_button' ) ) {
+		    $dir_name = method_exists( $this, 'get_temp_dir_name' ) ? $this->get_temp_dir_name( $settings[ 'loadable_file_name' ] ) : "pro";
+		    $this->print_load_more_button( $settings, $args, $dir_name );
+	    }
         echo '</div>';
 
         if (Plugin::instance()->editor->is_edit_mode()) {

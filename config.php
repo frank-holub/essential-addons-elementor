@@ -872,6 +872,11 @@ $config = [
 		        ],
 		        'js'  => [
 			        [
+				        'file' => EAEL_PLUGIN_PATH . 'assets/front-end/js/view/quick-view.min.js',
+				        'type' => 'self',
+				        'context' => 'view',
+			        ],
+			        [
 				        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/view/woo-product-slider.min.js',
 				        'type'    => 'self',
 				        'context' => 'view',
@@ -916,11 +921,11 @@ $config = [
                     ],
                 ],
                 'js'  => [
-                    [
-                        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/lib-view/TweenMax/TweenMax.min.js',
-                        'type'    => 'lib',
-                        'context' => 'view',
-                    ],
+	                [
+		                'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/lib-view/gsap/gsap.min.js',
+		                'type'    => 'lib',
+		                'context' => 'view',
+	                ],
                     [
                         'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/lib-view/jarallax/jarallax.min.js',
                         'type'    => 'lib',

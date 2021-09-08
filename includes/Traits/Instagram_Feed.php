@@ -42,6 +42,11 @@ trait Instagram_Feed
             }
             $settings = HelperClass::eael_get_widget_settings($post_id, $widget_id);
 
+	        if ( ! empty ( $_POST['settings'] ) ) {
+		        parse_str( $_POST['settings'], $new_settings );
+		        $settings = wp_parse_args( $new_settings, $settings );
+	        }
+
         } else {
             // init vars
             $page = 0;

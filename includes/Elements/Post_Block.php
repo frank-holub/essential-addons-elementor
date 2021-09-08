@@ -848,7 +848,8 @@ class Post_Block extends Widget_Base
         // normalize settings for load more
         $settings['eael_dynamic_template_Layout'] = 'default';
         if (method_exists($this, 'print_load_more_button')) {
-            $this->print_load_more_button($settings, $args, 'pro');
+	        $dir_name = method_exists( $this, 'get_temp_dir_name' ) ? $this->get_temp_dir_name( $settings[ 'loadable_file_name' ] ) : "pro";
+            $this->print_load_more_button($settings, $args, $dir_name);
         }
     }
 }
