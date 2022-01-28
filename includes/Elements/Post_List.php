@@ -14,7 +14,6 @@ use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Elementor\Utils;
 
-//use \Essential_Addons_Elementor\Classes\Helper;
 use \Essential_Addons_Elementor\Pro\Classes\Helper;
 
 
@@ -105,22 +104,6 @@ class Post_List extends Widget_Base
                     'default' => 'default',
                 ]
             );
-
-//            $this->add_control(
-//                'eael_post_list_layout_preset',
-//                [
-//                    'label' => __('Preset', 'essential-addons-elementor'),
-//                    'type' => Controls_Manager::SELECT,
-//                    'options' => [
-//                        'preset-1' => __('Preset 1', 'essential-addons-elementor'),
-//                        'preset-2' => __('Preset 2', 'essential-addons-elementor'),
-//                    ],
-//                    'default' => 'preset-1',
-//                    'condition' => [
-//                        'eael_post_list_layout_type' => ['default','preset-2','preset-3'],
-//                    ],
-//                ]
-//            );
 
             $this->add_control(
                 'eael_enable_ajax_post_search',
@@ -289,33 +272,6 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
-
-//        $this->add_control(
-//            'featured_page_divider',
-//            [
-//                'type' => Controls_Manager::RAW_HTML,
-//                'label_block' => false,
-//                'raw' => '<br>',
-//                'condition' => [
-//                    'post_type' => 'page',
-//                ],
-//            ]
-//        );
-
-//        $this->add_control(
-//            'featured_page',
-//            [
-//                'label' => __('Featured Page', 'essential-addons-elementor'),
-//                'type' => 'eael-select2',
-//                'label_block' => true,
-//                'source_name' => 'post_type',
-//                'source_type' => 'page',
-//                'condition' => [
-//                    'post_type' => 'page',
-//                    'eael_post_list_featured_area' => 'yes',
-//                ],
-//            ]
-//        );
 
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
@@ -1085,15 +1041,15 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -1300,15 +1256,15 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -1352,19 +1308,19 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
                         'title' => __('Justified', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-justify',
+                        'icon' => 'eicon-text-align-justify',
                     ],
                 ],
                 'selectors' => [
@@ -1408,15 +1364,15 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -1553,15 +1509,15 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -1605,19 +1561,19 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
                         'title' => __('Justified', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-justify',
+                        'icon' => 'eicon-text-align-justify',
                     ],
                 ],
                 'selectors' => [
@@ -1661,15 +1617,15 @@ class Post_List extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [

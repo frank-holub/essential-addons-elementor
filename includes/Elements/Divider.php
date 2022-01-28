@@ -107,7 +107,7 @@ class Divider extends Widget_Base
 					],
 					'text'         => [
 						'title'    => esc_html__('Text', 'essential-addons-elementor'),
-						'icon'     => 'fa fa-file-text-o',
+						'icon'     => 'eicon-text',
 					],
 					'icon'         => [
 						'title'    => esc_html__('Icon', 'essential-addons-elementor'),
@@ -115,7 +115,7 @@ class Divider extends Widget_Base
 					],
 					'image'        => [
 						'title'    => esc_html__('Image', 'essential-addons-elementor'),
-						'icon'     => 'fa fa-picture-o',
+						'icon'     => 'eicon-image-bold',
 					],
 				],
 				'default'               => 'plain',

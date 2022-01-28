@@ -216,7 +216,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -239,7 +239,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -262,7 +262,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -285,7 +285,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -308,7 +308,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -331,7 +331,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -363,7 +363,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -372,6 +372,41 @@ class LD_Course_List extends Widget_Base
                     ]
                 ]
             );
+
+	        $this->add_control(
+		        'change_free_price_text',
+		        [
+			        'label'       => __('Change Free Price Text?', 'essential-addons-elementor'),
+			        'type'        => Controls_Manager::CHOOSE,
+			        'options' => [
+				        'true' => [
+					        'title' => __('Show', 'essential-addons-elementor'),
+					        'icon' => 'fa fa-check',
+				        ],
+				        'false' => [
+					        'title' => __('Hide', 'essential-addons-elementor'),
+					        'icon' => 'eicon-ban',
+				        ]
+			        ],
+			        'default'   => 'false',
+			        'condition' => [
+				         'template_skin!' => ['layout__1' ]
+			        ]
+		        ]
+	        );
+
+	        $this->add_control(
+		        'free_price_text',
+		        [
+			        'label'       => __('Free Price Text', 'essential-addons-elementor'),
+			        'type'        => Controls_Manager::TEXT,
+			        'default'   => __('Free', 'essential-addons-elementor'),
+			        'condition' => [
+				        'change_free_price_text' => 'true',
+                        'template_skin!' => ['layout__1' ]
+			        ]
+		        ]
+	        );
 
             $this->add_control(
                 'show_button',
@@ -386,13 +421,44 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true'
                 ]
             );
 
+	        $this->add_control(
+		        'change_button_text',
+		        [
+			        'label'       => __('Change Button Text?', 'essential-addons-elementor'),
+			        'description' => __('Hide course enroll button.', 'essential-addons-elementor'),
+			        'type'        => Controls_Manager::CHOOSE,
+			        'options' => [
+				        'true' => [
+					        'title' => __('Show', 'essential-addons-elementor'),
+					        'icon' => 'fa fa-check',
+				        ],
+				        'false' => [
+					        'title' => __('Hide', 'essential-addons-elementor'),
+					        'icon' => 'eicon-ban',
+				        ]
+			        ],
+			        'default'   => 'false'
+		        ]
+	        );
+
+	        $this->add_control(
+		        'button_text',
+		        [
+			        'label'       => __('Button Text', 'essential-addons-elementor'),
+			        'type'        => Controls_Manager::TEXT,
+			        'default'   => __('Read More', 'essential-addons-elementor'),
+                    'condition' => [
+                        'change_button_text' => 'true'
+                    ]
+		        ]
+	        );
 
             $this->add_control(
                 'show_progress_bar',
@@ -407,7 +473,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true'
@@ -427,7 +493,7 @@ class LD_Course_List extends Widget_Base
                         ],
                         'false' => [
                             'title' => __('Hide', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-ban',
+                            'icon' => 'eicon-ban',
                         ]
                     ],
                     'default'   => 'true',
@@ -659,15 +725,15 @@ class LD_Course_List extends Widget_Base
                     'options' => [
                         'left' => [
                             'title' => __('Left', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
                             'title' => __('Center', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-center',
+                            'icon' => 'eicon-text-align-center',
                         ],
                         'right' => [
                             'title' => __('Right', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-text-align-right',
                         ]
                     ],
                     'default' => 'center',
@@ -1722,15 +1788,15 @@ class LD_Course_List extends Widget_Base
                     'options' => [
                         'flex-end' => [
                             'title' => __('Left', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-left',
+                            'icon' => 'eicon-text-align-left',
                         ],
                         'center' => [
                             'title' => __('Center', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-center',
+                            'icon' => 'eicon-text-align-center',
                         ],
                         'flex-start' => [
                             'title' => __('Right', 'essential-addons-elementor'),
-                            'icon' => 'fa fa-align-right',
+                            'icon' => 'eicon-text-align-right',
                         ]
                     ],
                     'default' => 'center',
@@ -1962,6 +2028,21 @@ class LD_Course_List extends Widget_Base
                 $price = $legacy_meta['sfwd-courses_course_price'] ? $legacy_meta['sfwd-courses_course_price'] : 'Free';
 
                 // $ribbon_text = get_post_meta($course->ID, '_learndash_course_grid_custom_ribbon_text', true); // not using
+
+                //LearnDash Course Grid addon support
+                $enable_video_preview_key_exist = metadata_exists('post', $course->ID, '_learndash_course_grid_enable_video_preview');
+                $video_embed_code_key_exist = metadata_exists('post', $course->ID, '_learndash_course_grid_enable_video_preview');
+                $ld_course_grid_enable_video_preview = $ld_course_grid_video_embed_code = '';
+
+                if( true === $enable_video_preview_key_exist && true === $video_embed_code_key_exist){
+                    $ld_course_grid_enable_video_preview = get_post_meta($course->ID, '_learndash_course_grid_enable_video_preview', true);
+                    $ld_course_grid_video_embed_code = get_post_meta($course->ID, '_learndash_course_grid_video_embed_code', true);
+
+                    // Retrive oembed HTML if URL provided
+                    if ( preg_match( '/^http/', $ld_course_grid_video_embed_code ) ) {
+                        $ld_course_grid_video_embed_code = wp_oembed_get( $ld_course_grid_video_embed_code, array( 'height' => 600, 'width' => 400 ) );
+                    }
+                }
 
                 if ($settings['template_skin'] === 'default' || $settings['template_skin'] === 'layout__1' || $settings['template_skin'] === 'layout__3') {
                     $author_courses = add_query_arg(

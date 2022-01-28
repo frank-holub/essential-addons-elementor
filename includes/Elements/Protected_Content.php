@@ -94,10 +94,12 @@ class Protected_Content extends Widget_Base {
 		$this->add_control(
 			'eael_protected_content_template',
 			[
-				'label'     => __( 'Choose Template', 'essential-addons-elementor' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => Helper::get_elementor_templates(),
-				'condition' => [
+				'label'       => __( 'Choose Template', 'essential-addons-elementor' ),
+				'type'        => 'eael-select2',
+				'source_name' => 'post_type',
+				'source_type' => 'elementor_library',
+				'label_block' => true,
+				'condition'   => [
 					'eael_protected_content_type' => 'template',
 				],
 			]
@@ -288,10 +290,12 @@ class Protected_Content extends Widget_Base {
 		$this->add_control(
 			'eael_protected_content_message_template',
 			[
-				'label'     => __( 'Choose Template', 'essential-addons-elementor' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => Helper::get_elementor_templates(),
-				'condition' => [
+				'label'       => __( 'Choose Template', 'essential-addons-elementor' ),
+				'type'        => 'eael-select2',
+				'source_name' => 'post_type',
+				'source_type' => 'elementor_library',
+				'label_block' => true,
+				'condition'   => [
 					'eael_protected_content_message_type' => 'template',
 				],
 			]
@@ -358,15 +362,15 @@ class Protected_Content extends Widget_Base {
 				'options'     => [
 					'left'   => [
 						'title' => esc_html__( 'Left', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [
 						'title' => esc_html__( 'Right', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'     => 'left',
@@ -443,15 +447,15 @@ class Protected_Content extends Widget_Base {
 				'options'     => [
 					'left'   => [
 						'title' => esc_html__( 'Left', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [
 						'title' => esc_html__( 'Right', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'     => 'left',
@@ -522,15 +526,15 @@ class Protected_Content extends Widget_Base {
                 'options' => [
                     'left' => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -595,15 +599,15 @@ class Protected_Content extends Widget_Base {
 				'options'     => [
 					'flex-start' => [
 						'title' => esc_html__( 'Left', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center'     => [
 						'title' => esc_html__( 'Center', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'flex-end'   => [
 						'title' => esc_html__( 'Right', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'     => 'left',
@@ -1032,6 +1036,11 @@ class Protected_Content extends Widget_Base {
                 <input type="submit" value="<?php echo $settings[ 'protection_password_submit_btn_txt' ]; ?>"
                        class="eael-submit">
 				<?php
+
+				if ( 'template' === $settings[ 'eael_protected_content_type' ] ) {
+					echo sprintf( '<input name="eael_protected_content_id" value="%s" type="hidden">', $widget_id );
+				}
+
 				if ( isset( $_POST[ 'protection_password_' . $widget_id ] ) && ( $settings[ 'protection_password' ] !== $_POST[ 'protection_password_' . $widget_id ] ) ) {
 					echo sprintf(
 						__( '<p class="protected-content-error-msg">%s</p>', 'essential-addons-elementor' ),

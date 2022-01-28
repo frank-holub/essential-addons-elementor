@@ -80,7 +80,7 @@ class Counter extends Widget_Base {
 				'options'               => [
 					'none'        => [
 						'title'   => esc_html__( 'None', 'essential-addons-elementor' ),
-						'icon'    => 'fa fa-ban',
+						'icon'    => 'eicon-ban',
 					],
 					'icon'        => [
 						'title'   => esc_html__( 'Icon', 'essential-addons-elementor' ),
@@ -88,7 +88,7 @@ class Counter extends Widget_Base {
 					],
 					'image'       => [
 						'title'   => esc_html__( 'Image', 'essential-addons-elementor' ),
-						'icon'    => 'fa fa-picture-o',
+						'icon'    => 'eicon-image-bold',
 					],
 				],
 				'default'               => 'none',
@@ -300,19 +300,19 @@ class Counter extends Widget_Base {
 				'options'               => [
 					'left'      => [
 						'title' => __( 'Left', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center'    => [
 						'title' => __( 'Center', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right'     => [
 						'title' => __( 'Right', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 					'justify'   => [
 						'title' => __( 'Justified', 'essential-addons-elementor' ),
-						'icon'  => 'fa fa-align-justify',
+						'icon'  => 'eicon-text-align-justify',
 					],
 				],
 				'default'               => 'center',

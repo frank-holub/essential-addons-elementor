@@ -137,14 +137,16 @@ class Toggle extends Widget_Base {
         
         $this->add_control(
             'primary_templates',
-            [
-                'label'                 => __( 'Choose Template', 'essential-addons-elementor' ),
-                'type'                  => Controls_Manager::SELECT,
-                'options'               => Helper::get_elementor_templates(),
-				'condition'             => [
-					'primary_content_type'      => 'template',
-				],
-            ]
+	        [
+		        'label'       => __( 'Choose Template', 'essential-addons-elementor' ),
+		        'type'        => 'eael-select2',
+		        'source_name' => 'post_type',
+		        'source_type' => 'elementor_library',
+		        'label_block' => true,
+		        'condition'   => [
+			        'primary_content_type' => 'template',
+		        ],
+	        ]
         );
         
         $this->add_control(
@@ -211,14 +213,16 @@ class Toggle extends Widget_Base {
         
         $this->add_control(
             'secondary_templates',
-            [
-                'label'                 => __( 'Choose Template', 'essential-addons-elementor' ),
-                'type'                  => Controls_Manager::SELECT,
-                'options'               => Helper::get_elementor_templates(),
-				'condition'             => [
-					'secondary_content_type'      => 'template',
-				],
-            ]
+	        [
+		        'label'       => __( 'Choose Template', 'essential-addons-elementor' ),
+		        'type'        => 'eael-select2',
+		        'source_name' => 'post_type',
+		        'source_type' => 'elementor_library',
+		        'label_block' => true,
+		        'condition'   => [
+			        'secondary_content_type' => 'template',
+		        ],
+	        ]
         );
         
         $this->add_control(

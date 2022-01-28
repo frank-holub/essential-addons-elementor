@@ -146,7 +146,7 @@ class Content_Timeline extends Widget_Base
 				'options' => [
 					'img' => [
 						'title' => __('Image', 'essential-addons-elementor'),
-						'icon' => 'fa fa-picture-o',
+						'icon' => 'eicon-image-bold',
 					],
 					'icon' => [
 						'title' => __('Icon', 'essential-addons-elementor'),
@@ -216,7 +216,7 @@ class Content_Timeline extends Widget_Base
 					],
 					'0' => [
 						'title' => __('No', 'essential-addons-elementor'),
-						'icon' => 'fa fa-ban',
+						'icon' => 'eicon-ban',
 					]
 				],
 				'default' => '1',
@@ -565,6 +565,87 @@ class Content_Timeline extends Widget_Base
 
 		$this->end_controls_section();
 
+        /**
+         * -------------------------------------------
+         * Caret Style
+         * -------------------------------------------
+         */
+        $this->start_controls_section(
+            'eael_section_content_timeline_caret_style',
+            [
+                'label' => esc_html__('Caret Style', 'essential-addons-elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        //Caret can be hidden using caret size : 0
+//        $this->add_control(
+//            'eael_content_timeline_tab_caret_show',
+//            [
+//                'label' => esc_html__('Show Caret', 'essential-addons-elementor'),
+//                'type' => Controls_Manager::SWITCHER,
+//                'default' => 'yes',
+//                'return_value' => 'yes',
+//            ]
+//        );
+        $this->add_responsive_control(
+            'eael_content_timeline_tab_caret_size',
+            [
+                'label' => esc_html__('Caret Size', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 10,
+                ],
+                'range' => [
+                    'px' => [
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eael-content-timeline-content::before' => 'border-width: {{SIZE}}px;',
+                ],
+                'condition' => [
+//                    'eael_content_timeline_tab_caret_show' => 'yes',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'eael_content_timeline_tab_caret_position',
+            [
+                'label' => esc_html__('Caret Position', 'essential-addons-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 24,
+                ],
+                'range' => [
+                    'px' => [
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eael-content-timeline-content::before' => 'top: {{SIZE}}%;',
+                ],
+                'condition' => [
+//                    'eael_content_timeline_tab_caret_show' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'eael_content_timeline_tab_caret_color',
+            [
+                'label' => esc_html__('Caret Color', 'essential-addons-elementor'),
+                'type' => Controls_Manager::COLOR,
+//                'default' => 'transparent',
+                'default' => '#f1f2f3',
+                'selectors' => [
+                    '{{WRAPPER}} .eael-content-timeline-content::before' => 'border-left-color: {{VALUE}};border-right-color: {{VALUE}};',
+                ],
+                'condition' => [
+//                    'eael_content_timeline_tab_caret_show' => 'yes',
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
 		/**
 		 * Icon Circle Style
 		 */
@@ -805,15 +886,15 @@ class Content_Timeline extends Widget_Base
 				'options' => [
 					'left' => [
 						'title' => __('Left', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-left',
+						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => __('Center', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-center',
+						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => __('Right', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-right',
+						'icon' => 'eicon-text-align-right',
 					]
 				],
 				'default' => 'left',
@@ -863,19 +944,19 @@ class Content_Timeline extends Widget_Base
 				'options' => [
 					'left' => [
 						'title' => __('Left', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-left',
+						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => __('Center', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-center',
+						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => __('Right', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-right',
+						'icon' => 'eicon-text-align-right',
 					],
 					'justify' => [
 						'title' => __('Justified', 'essential-addons-elementor'),
-						'icon' => 'fa fa-align-justify',
+						'icon' => 'eicon-text-align-justify',
 					],
 				],
 				'default' => 'left',

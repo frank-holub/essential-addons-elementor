@@ -865,6 +865,11 @@ $config = [
 				        'context' => 'view',
 			        ],
 			        [
+				        'file' => EAEL_PLUGIN_PATH . 'assets/front-end/css/view/quick-view.min.css',
+				        'type' => 'self',
+				        'context' => 'view',
+			        ],
+			        [
 				        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/css/view/woo-product-slider.min.css',
 				        'type'    => 'self',
 				        'context' => 'view',
@@ -878,6 +883,25 @@ $config = [
 			        ],
 			        [
 				        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/view/woo-product-slider.min.js',
+				        'type'    => 'self',
+				        'context' => 'view',
+			        ],
+		        ],
+	        ],
+        ],
+        'advanced-search' => [
+	        'class'      => '\Essential_Addons_Elementor\Pro\Elements\Advanced_Search',
+	        'dependency' => [
+		        'css' => [
+			        [
+				        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/css/view/advanced-search.min.css',
+				        'type'    => 'self',
+				        'context' => 'view',
+			        ],
+		        ],
+		        'js'  => [
+			        [
+				        'file'    => EAEL_PRO_PLUGIN_PATH . 'assets/front-end/js/view/advanced-search.min.js',
 				        'type'    => 'self',
 				        'context' => 'view',
 			        ],
@@ -984,6 +1008,9 @@ $config = [
                     ],
                 ],
             ],
+        ],
+        'xd-copy' => [
+	        'class' => '\Essential_Addons_Elementor\Pro\Extensions\XD_Copy',
         ],
     ],
 ];

@@ -482,15 +482,15 @@ class Lightbox extends Widget_Base
 				'options'     => [
 					'left' => [
 						'title' => esc_html__('Left', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__('Center', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'flex-end' => [
 						'title' => esc_html__('Right', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'   => 'left',
@@ -714,15 +714,15 @@ class Lightbox extends Widget_Base
 				'options'               => [
 					'left'      => [
 						'title' => __('Left', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center'    => [
 						'title' => __('Center', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right'     => [
 						'title' => __('Right', 'essential-addons-elementor'),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 				],
 				'default'               => '',
@@ -1985,7 +1985,7 @@ class Lightbox extends Widget_Base
                             printf('<i class="open-pop-up-button-icon-right %1$s" aria-hidden="true"></i>', $settings['eael_lightbox_open_btn_icon']);
                         }
 
-						printf('</ %1$s>', $trigger_html_tag);
+						printf('</%1$s>', $trigger_html_tag);
 
 					} else if ('icon' ==  $settings['trigger_type']) {
 

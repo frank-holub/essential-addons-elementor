@@ -1,8 +1,8 @@
 === Essential Addons for Elementor - Pro ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
-Tested up to: 5.8
-Stable tag: 4.4.9
+Tested up to: 5.9
+Stable tag: 5.0.5
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -87,6 +87,62 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 5.0.5 - 27/01/2022 =
+
+- Few minor bug fixes & improvements
+
+= 5.0.4 - 27/01/2022 =
+
+- Fixed: EA Parallax | Throwing Console Error
+- Fixed: EA Advanced Search | Throwing PHP Warning
+- Few minor bug fixes & improvements
+
+= 5.0.3 - 25/01/2022 =
+
+- Fixed: EA Lightbox & Modal | Modal text adding span tag at the end after pagination
+- Added: EA Advanced Search | Exclude taxonomy option
+- Few minor bug fixes & improvements
+
+= 5.0.2 - 19/01/2022 =
+
+- Improved: EA Advanced Data Table | SQL Queries for Database source
+- EA Testimonial Slider | Throwing error on PHP 8.0 
+- Few minor bug fixes & improvements
+
+= 5.0.1 - 30/12/2021 =
+
+- Few minor bug fix & improvements
+
+= 5.0.0 - 26/12/2021 =
+
+- Added: EA Advanced Search
+- Added: EA Cross-Domain Copy Paste
+- Few minor bug fix & improvements
+
+= 4.4.12 - 14/12/2021 =
+
+- Improved: EA LearnDash Course List | Added controller to change the “Free” and “See More” texts
+- Fixed: EA Static Product | add to cart not working
+- Fixed: EA Instagram Feed | Force square option not stretching the images
+- Few minor bug fix & improvements
+
+= 4.4.11 - 11/10/2021 =
+
+- Fixed: EA Static Product | Throwing Fatal Error when translating with WPML
+- Fixed: EA Static Product | Typography options not working properly
+- Fixed: EA Protected Content | Not working properly when saved template is used as content
+- Fixed: EA Advanced Menu | Sub-menu not expanding in vertical layout
+- Fixed: EA LearnDash Course List | Video Thumbnail Not Working
+- Few minor bug fix & improvements
+
+= 4.4.10 - 26/09/2021 =
+
+- Fixed: EA Advanced Google Map | Map Icon color not working
+- Improved: EA Instagram Feed | Added 'alt' text in image tag
+- Fixed: EA Offcanvas Menu | not working on "question marked" URL
+- Fixed: EA Lightbox & Modal | not working if image is selected as trigger.
+- Few minor bug fix & improvements
 
 = 4.4.9 - 01/09/2021 =
 

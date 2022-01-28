@@ -47,7 +47,7 @@ class EAELicense {
 	 * Contact Support URL
 	 * @var string
 	 */
-	private $support_url = 'https://wpdeveloper.net/support/new-ticket';
+	private $support_url = 'https://wpdeveloper.com/support/new-ticket';
 	/**
 	 * Initializes the license manager client.
 	 */
@@ -403,7 +403,7 @@ class EAELicense {
 			case 'expired':
 				$message = sprintf(
 					__( 'Your license has been expired. Please %1$srenew your license%2$s key to enable updates for %3$s.', $this->text_domain ),
-					'<a href="https://wpdeveloper.net/account">', '</a>',
+					'<a href="https://wpdeveloper.com/account">', '</a>',
 					'<strong>' . $this->product_name . '</strong>'
 				);
 				break;

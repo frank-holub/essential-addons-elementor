@@ -441,15 +441,15 @@ class Twitter_Feed_Carousel extends Widget_Base
                 'options'   => [
                     'flex-start' => [
                         'title' => __('Top', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-left',
+                        'icon'  => 'eicon-text-align-left',
                     ],
                     'center'     => [
                         'title' => __('Middle', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-center',
+                        'icon'  => 'eicon-text-align-center',
                     ],
                     'flex-end'   => [
                         'title' => __('Bottom', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-right',
+                        'icon'  => 'eicon-text-align-right',
                     ],
                 ],
                 'default'   => 'center',

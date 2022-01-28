@@ -271,7 +271,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                     ],
                     '0' => [
                         'title' => __('No', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-ban',
+                        'icon' => 'eicon-ban',
                     ],
                 ],
                 'default' => '1',
@@ -1169,15 +1169,15 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -1200,15 +1200,15 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -1629,15 +1629,15 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -1756,11 +1756,15 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         // content
             echo '<div ' . $this->get_render_attribute_string('eael_dynamic_gallery_container') . '>';
                 $template = $this->get_template($this->get_settings('eael_dynamic_template_Layout'));
+	            $found_posts = 0;
 
                 if(file_exists($template)){
                     $query = new \WP_Query($args);
 
                     if ($query->have_posts()) {
+	                    $found_posts      = $query->found_posts;
+	                    $max_page         = ceil( $found_posts / absint( $args['posts_per_page'] ) );
+	                    $args['max_page'] = $max_page;
 
                         while ($query->have_posts()) {
                             $query->the_post();
@@ -1785,7 +1789,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
         $settings['loadable_file_name'] = $this->get_filename_only($template);
 
 
-	    if ( method_exists( $this, 'print_load_more_button' ) ) {
+	    if ( method_exists( $this, 'print_load_more_button' ) && $found_posts > $args['posts_per_page'] ) {
 		    $dir_name = method_exists( $this, 'get_temp_dir_name' ) ? $this->get_temp_dir_name( $settings[ 'loadable_file_name' ] ) : "pro";
 		    $this->print_load_more_button( $settings, $args, $dir_name );
 	    }

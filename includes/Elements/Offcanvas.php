@@ -162,9 +162,9 @@ class Offcanvas extends Widget_Base
             'saved_widget',
             [
                 'label' => __('Choose Widget', 'essential-addons-elementor'),
-                'type' => Controls_Manager::SELECT,
-                'options' => Helper::get_page_template_options('widget'),
-                'default' => '-1',
+                'type'        => 'eael-select2',
+                'source_name' => 'post_type',
+                'source_type' => 'elementor_library',
                 'condition' => [
                     'content_type' => 'widget',
                 ],
@@ -175,9 +175,9 @@ class Offcanvas extends Widget_Base
             'saved_section',
             [
                 'label' => __('Choose Section', 'essential-addons-elementor'),
-                'type' => Controls_Manager::SELECT,
-                'options' => Helper::get_page_template_options('section'),
-                'default' => '-1',
+                'type'        => 'eael-select2',
+                'source_name' => 'post_type',
+                'source_type' => 'elementor_library',
                 'condition' => [
                     'content_type' => 'section',
                 ],
@@ -186,15 +186,16 @@ class Offcanvas extends Widget_Base
 
         $this->add_control(
             'templates',
-            [
-                'label' => __('Choose Template', 'essential-addons-elementor'),
-                'type' => Controls_Manager::SELECT,
-                'options' => Helper::get_page_template_options('page'),
-                'default' => '-1',
-                'condition' => [
-                    'content_type' => 'template',
-                ],
-            ]
+	        [
+		        'label'       => __( 'Choose Template', 'essential-addons-elementor' ),
+		        'type'        => 'eael-select2',
+		        'source_name' => 'post_type',
+		        'source_type' => 'elementor_library',
+		        'label_block' => true,
+		        'condition'   => [
+			        'content_type' => 'template',
+		        ],
+	        ]
         );
 
         $repeater = new Repeater();
@@ -552,19 +553,19 @@ class Offcanvas extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
                         'title' => __('Justified', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-justify',
+                        'icon' => 'eicon-text-align-justify',
                     ],
                 ],
                 'default' => '',

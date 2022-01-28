@@ -178,15 +178,15 @@ endforeach;
             'options' => [
                 'left' => [
                     'title' => __('Left', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-left',
+                    'icon' => 'eicon-text-align-left',
                 ],
                 'center' => [
                     'title' => __('Center', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-center',
+                    'icon' => 'eicon-text-align-center',
                 ],
                 'right' => [
                     'title' => __('Right', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-right',
+                    'icon' => 'eicon-text-align-right',
                 ],
             ],
             'default' => 'center',
@@ -538,15 +538,15 @@ endforeach;
             'options' => [
                 'flex-start' => [
                     'title' => esc_html__('Left', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-left',
+                    'icon' => 'eicon-text-align-left',
                 ],
                 'center' => [
                     'title' => esc_html__('Center', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-center',
+                    'icon' => 'eicon-text-align-center',
                 ],
                 'flex-end' => [
                     'title' => esc_html__('Right', 'essential-addons-elementor'),
-                    'icon' => 'fa fa-align-right',
+                    'icon' => 'eicon-text-align-right',
                 ],
             ],
             'default' => '',
@@ -1098,27 +1098,14 @@ endif;
 
     public function add_admin_licnes_markup_html()
     {
-        ?>
-        <div class="eael-admin-block eael-admin-block-license">
-            <header class="eael-admin-block-header">
-                <div class="eael-admin-block-header-icon">
-                    <img src="<?php echo EAEL_PRO_PLUGIN_URL . 'assets/admin/images/icon-automatic-updates.svg'; ?>"
-                         alt="essential-addons-automatic-update">
-                </div>
-                <h4 class="eael-admin-title"><?php _e('Automatic Update', 'essential-addons-elementor');?></h4>
-            </header>
-            <div class="eael-admin-block-content">
-				<?php do_action('eael_licensing');?>
-            </div>
-        </div>
-		<?php
-}
+        do_action('eael_licensing');
+    }
 
     public function add_eael_premium_support_link()
     {
         ?>
         <p><?php echo _e('Stuck with something? Get help from live chat or support ticket.', 'essential-addons-elementor'); ?></p>
-        <a href="https://wpdeveloper.net"
+        <a href="https://wpdeveloper.com"
            class="ea-button"
            target="_blank"><?php echo _e('Initiate a Chat', 'essential-addons-elementor'); ?></a>
 		<?php
@@ -1150,7 +1137,7 @@ endif;
     public function add_manage_linces_action_link()
     {
         $link_text = __('Manage License', 'essential-addons-elementor');
-        printf('<a href="https://wpdeveloper.net/account" target="_blank">%s</a>', $link_text);
+        printf('<a class="eael-button button__themeColor" href="https://wpdeveloper.com/account" target="_blank">%s</a>', $link_text);
     }
 
     public function team_member_presets_condition($options)
@@ -1647,6 +1634,10 @@ endif;
                 return;
             }
 
+            if( !$this->eael_valid_select_query( $settings['ea_adv_data_table_source_database_query'] ) ){
+                return $results;
+            }
+
             $results = $wpdb->get_results($settings['ea_adv_data_table_source_database_query'], ARRAY_A);
         }
 
@@ -1712,6 +1703,11 @@ endif;
                         $results = $query->fetch_all(MYSQLI_ASSOC);
                     }
                 } else {
+
+	                if( !$this->eael_valid_select_query( $settings['ea_adv_data_table_source_remote_query'] ) ){
+		                return $results;
+	                }
+
                     if ($settings['ea_adv_data_table_source_remote_query']) {
                         $query = $conn->query($settings['ea_adv_data_table_source_remote_query']);
 

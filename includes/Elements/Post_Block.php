@@ -444,15 +444,15 @@ class Post_Block extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -514,19 +514,19 @@ class Post_Block extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
                         'title' => __('Justified', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-justify',
+                        'icon' => 'eicon-text-align-justify',
                     ],
                 ],
                 'selectors' => [
@@ -604,15 +604,15 @@ class Post_Block extends Widget_Base
                 'options' => [
                     'flex-start' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'flex-end' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -632,19 +632,19 @@ class Post_Block extends Widget_Base
                 'options' => [
                     'left' => [
                         'title' => __('Left', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __('Center', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
                         'title' => __('Right', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
                         'title' => __('Justified', 'essential-addons-elementor'),
-                        'icon' => 'fa fa-align-justify',
+                        'icon' => 'eicon-text-align-justify',
                     ],
                 ],
                 'selectors' => [
@@ -827,9 +827,13 @@ class Post_Block extends Widget_Base
 
         $template = $this->get_template($settings['eael_dynamic_template_Layout']);
         $settings['loadable_file_name'] = $this->get_filename_only($template);
+	    $found_posts = 0;
         if (file_exists($template)) {
             $query = new \WP_Query($args);
             if ($query->have_posts()) {
+	            $found_posts      = $query->found_posts;
+	            $max_page         = ceil( $found_posts / absint( $args['posts_per_page'] ) );
+	            $args['max_page'] = $max_page;
                 while ($query->have_posts()) {
                     $query->the_post();
                     include($template);
@@ -847,7 +851,7 @@ class Post_Block extends Widget_Base
 
         // normalize settings for load more
         $settings['eael_dynamic_template_Layout'] = 'default';
-        if (method_exists($this, 'print_load_more_button')) {
+        if (method_exists($this, 'print_load_more_button') && $found_posts > $args['posts_per_page']) {
 	        $dir_name = method_exists( $this, 'get_temp_dir_name' ) ? $this->get_temp_dir_name( $settings[ 'loadable_file_name' ] ) : "pro";
             $this->print_load_more_button($settings, $args, $dir_name);
         }

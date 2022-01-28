@@ -476,15 +476,15 @@ class Static_Product extends Widget_Base
                 'options'     => [
                     'left'   => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-left',
+                        'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-center',
+                        'icon'  => 'eicon-text-align-center',
                     ],
                     'right'  => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-right',
+                        'icon'  => 'eicon-text-align-right',
                     ],
                 ],
                 'default'     => 'center',
@@ -503,15 +503,15 @@ class Static_Product extends Widget_Base
                 'options'     => [
                     'flex-start'   => [
                         'title' => esc_html__('Left', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-left',
+                        'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => esc_html__('Center', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-center',
+                        'icon'  => 'eicon-text-align-center',
                     ],
                     'flex-end'  => [
                         'title' => esc_html__('Right', 'essential-addons-elementor'),
-                        'icon'  => 'fa fa-align-right',
+                        'icon'  => 'eicon-text-align-right',
                     ],
                 ],
                 'selectors'   => [
@@ -936,7 +936,7 @@ class Static_Product extends Widget_Base
             [
                 'name'     => 'eael_static_product_title_typography',
                 'scheme'   => Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eael-static-product-details > h2',
+                'selector' => '{{WRAPPER}} .eael-static-product-details > h2 > a',
             ]
         );
 
@@ -1137,7 +1137,7 @@ class Static_Product extends Widget_Base
             [
                 'name'      => 'eael_static_product_btn_typography',
                 'scheme'    => Typography::TYPOGRAPHY_1,
-                'selector'  => '{{WRAPPER}} .eael-static-product-btn',
+                'selector'  => '{{WRAPPER}} .eael-static-product-btn .eael-static-product-btn-inner',
                 'condition' => [
                     'eael_static_product_show_details_btn' => 'yes',
                 ],
@@ -1405,7 +1405,7 @@ class Static_Product extends Widget_Base
             [
                 'name'     => 'eael_static_product_add_to_cart_btn_typography',
                 'scheme'   => Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eael-static-product-add-to-cart',
+                'selector' => '{{WRAPPER}} .eael-static-product-add-to-cart .eael-static-product-btn-inner',
             ]
         );
 
@@ -1547,6 +1547,11 @@ class Static_Product extends Widget_Base
         $eael_static_product_layout = (!empty($settings['eael_static_product_layout']) ? $settings['eael_static_product_layout'] : '');
         $add_to_cart_icon = empty($settings['eael_static_product_add_to_cart_button_icon_new']);
         $product_ID = (!empty($settings['eael_static_product_add_to_cart_btn_product_ID']) ? $settings['eael_static_product_add_to_cart_btn_product_ID'] : '');
+
+	    // WC Notices
+	    if ( class_exists( 'woocommerce' ) ) {
+		    woocommerce_output_all_notices();
+	    }
 
         // template markup
         $cartButtonMarkup = '';

@@ -4,14 +4,14 @@
  * Description: Supercharge your Elementor page building experience with Essential Addons PRO. Get your hands on exclusive elements such as Instagram Feed, Protected Content, Smart Post List, and many more.
  * Plugin URI: https://essential-addons.com/elementor/
  * Author: WPDeveloper
- * Version: 4.4.9
- * Author URI: http://www.wpdeveloper.net
+ * Version: 5.0.5
+ * Author URI: http://www.wpdeveloper.com
  * Text Domain: essential-addons-elementor
  * Domain Path: /languages
  *
- * WC tested up to: 5.6.0
- * Elementor tested up to: 3.4.3
- * Elementor Pro tested up to: 3.4.0
+  * WC tested up to: 6.1.1
+ * Elementor tested up to: 3.5.4
+ * Elementor Pro tested up to: 3.5.2
  */
 
 if (!defined('WPINC')) {
@@ -27,8 +27,8 @@ define('EAEL_PRO_PLUGIN_FILE', __FILE__);
 define('EAEL_PRO_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('EAEL_PRO_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('EAEL_PRO_PLUGIN_URL', plugins_url('/', __FILE__));
-define('EAEL_PRO_PLUGIN_VERSION', '4.4.9');
-define('EAEL_STORE_URL', 'https://wpdeveloper.net/');
+define('EAEL_PRO_PLUGIN_VERSION', '5.0.5');
+define('EAEL_STORE_URL', 'https://api.wpdeveloper.com');
 define('EAEL_SL_ITEM_ID', 4372);
 define('EAEL_SL_ITEM_SLUG', 'essential-addons-elementor');
 define('EAEL_SL_ITEM_NAME', 'Essential Addons for Elementor');

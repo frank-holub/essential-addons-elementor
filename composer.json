@@ -1,18 +1,13 @@
 {
-  "name": "frank-holub/essential-addons-elementor",
-  "description": "Essential Addons for Elementor plugin mirror",
-  "keywords": ["wordpress", "plugin"],
-  "homepage": "https://github.com/frank-holub/essential-addons-elementor",
-  "authors": [
-    {
-      "name": "Essential Addons",
-      "homepage": "https://essential-addons.com/elementor/"
-    }
-  ],
-  "type": "wordpress-plugin",
   "require": {
-    "php": ">=5.4",
-    "johnpbloch/wordpress-core": "*",
-    "composer/installers": "^1.0"
+    "google/apiclient": "^2.7"
+  },
+  "scripts": {
+    "post-update-cmd": "Google_Task_Composer::cleanup"
+  },
+  "extra": {
+    "google/apiclient-services": [
+      "Oauth2"
+    ]
   }
 }
