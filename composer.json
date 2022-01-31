@@ -1,12 +1,12 @@
 {
-  "name": "frank-holub/elementor-pro",
-  "description": "Elementor Pro plugin mirror",
+  "name": "frank-holub/essential-addons-elementor",
+  "description": "Essential Addons for Elementor plugin mirror",
   "keywords": ["wordpress", "plugin"],
-  "homepage": "https://github.com/frank-holub/elementor-pro",
+  "homepage": "https://github.com/frank-holub/essential-addons-elementor",
   "authors": [
     {
-      "name": "Elementor.com",
-      "homepage": "https://elementor.com"
+      "name": "Essential Addons",
+      "homepage": "https://essential-addons.com/elementor/"
     }
   ],
   "type": "wordpress-plugin",
