@@ -2,7 +2,7 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
 Tested up to: 5.9
-Stable tag: 5.0.5
+Stable tag: 5.0.6
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -87,6 +87,11 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 5.0.6 - 02/02/2022 =
+
+- EA Advanced Google Map | "Add Item" button not working in Polygon type
+- Few minor bug fixes & improvements
 
 = 5.0.5 - 27/01/2022 =
 

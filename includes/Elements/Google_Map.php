@@ -559,31 +559,31 @@ class Google_Map extends Widget_Base
 		$this->add_control(
 			'eael_google_map_polylines',
 			[
-				'type' => Controls_Manager::REPEATER,
-				'seperator' => 'before',
-				'default' => [
+				'type'        => Controls_Manager::REPEATER,
+				'seperator'   => 'before',
+				'default'     => [
 					[
-						'eael_google_map_polyline_title' => esc_html__('#1', 'essential-addons-elementor'),
-						'eael_google_map_polyline_lat'	=> '-12.040397656836609',
-						'eael_google_map_polyline_lng'	=> '-77.03373871559225'
+						'eael_google_map_polyline_title' => esc_html__( '#1', 'essential-addons-elementor' ),
+						'eael_google_map_polyline_lat'   => '-12.040397656836609',
+						'eael_google_map_polyline_lng'   => '-77.03373871559225'
 					],
 					[
-						'eael_google_map_polyline_title' => esc_html__('#2', 'essential-addons-elementor'),
-						'eael_google_map_polyline_lat'	=> '-12.040248585302038',
-						'eael_google_map_polyline_lng'	=> '-77.03993927003302'
+						'eael_google_map_polyline_title' => esc_html__( '#2', 'essential-addons-elementor' ),
+						'eael_google_map_polyline_lat'   => '-12.040248585302038',
+						'eael_google_map_polyline_lng'   => '-77.03993927003302'
 					],
 					[
-						'eael_google_map_polyline_title' => esc_html__('#3', 'essential-addons-elementor'),
-						'eael_google_map_polyline_lat'	=> '-12.050047116528843',
-						'eael_google_map_polyline_lng'	=> '-77.02448169303511'
+						'eael_google_map_polyline_title' => esc_html__( '#3', 'essential-addons-elementor' ),
+						'eael_google_map_polyline_lat'   => '-12.050047116528843',
+						'eael_google_map_polyline_lng'   => '-77.02448169303511'
 					],
 					[
-						'eael_google_map_polyline_title' => esc_html__('#4', 'essential-addons-elementor'),
-						'eael_google_map_polyline_lat'	=> '-12.044804866577001',
-						'eael_google_map_polyline_lng'	=> '-77.02154422636042'
+						'eael_google_map_polyline_title' => esc_html__( '#4', 'essential-addons-elementor' ),
+						'eael_google_map_polyline_lat'   => '-12.044804866577001',
+						'eael_google_map_polyline_lng'   => '-77.02154422636042'
 					],
 				],
-				'fields' => $repeater->get_controls(),
+				'fields'      => $polylines_repeater->get_controls(),
 				'title_field' => '{{eael_google_map_polyline_title}}',
 			]
 		);

@@ -19,7 +19,7 @@ var postListHandler = function ($scope, $) {
             $taxonomy = {
                 taxonomy: $('.post-categories a.active', $scope).data('taxonomy'),
                 field: 'term_id',
-                terms: [$('.post-categories a.active', $scope).data('id')]
+                terms: $('.post-categories a.active', $scope).data('id')
             };
 
         // ajax
@@ -83,7 +83,7 @@ var postListHandler = function ($scope, $) {
             $taxonomy = {
                 taxonomy: $('.post-categories a.active', $scope).data('taxonomy'),
                 field: 'term_id',
-                terms: [$('.post-categories a.active', $scope).data('id')]
+                terms: $('.post-categories a.active', $scope).data('id')
             };
 
         if (($taxonomy.taxonomy === '') || ($taxonomy.taxonomy === 'all') || ($taxonomy.taxonomy === 'undefined')) {

@@ -315,9 +315,16 @@ var AdvGoogleMap = function ($scope, $) {
         $eael_polylines = [];
 
       $polylines_data.forEach(function ($polyline) {
+        let lat = parseFloat($polyline.eael_google_map_polyline_lat),
+            long = parseFloat($polyline.eael_google_map_polyline_lng);
+
+        if (isNaN(lat) || isNaN(long) || lat < -90 || lat > 90 || long < -180 || long > 180) {
+          return;
+        }
+
         $eael_polylines.push([
-          parseFloat($polyline.eael_google_map_polyline_lat),
-          parseFloat($polyline.eael_google_map_polyline_lng),
+          lat,
+          long,
         ]);
       });
 

@@ -417,11 +417,11 @@ msgstr ""
 msgid "Read More Button Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:1437, ../includes/Elements/Post_Block.php:846, ../includes/Elements/Post_Carousel.php:1764, ../includes/Elements/Post_List.php:2311
+#: ../includes/Elements/Content_Timeline.php:1437, ../includes/Elements/Post_Block.php:846, ../includes/Elements/Post_Carousel.php:1759, ../includes/Elements/Post_List.php:2311
 msgid "<p class=\"no-posts-found\">No layout found!</p>"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:1433, ../includes/Elements/Dynamic_Filterable_Gallery.php:1774, ../includes/Elements/Post_Block.php:842, ../includes/Elements/Post_Carousel.php:1760, ../includes/Elements/Post_List.php:2307
+#: ../includes/Elements/Content_Timeline.php:1433, ../includes/Elements/Dynamic_Filterable_Gallery.php:1774, ../includes/Elements/Post_Block.php:842, ../includes/Elements/Post_Carousel.php:1755, ../includes/Elements/Post_List.php:2307
 msgid "<p class=\"no-posts-found\">No posts found!</p>"
 msgstr ""
 
@@ -2209,7 +2209,7 @@ msgstr ""
 msgid "Cover Image"
 msgstr ""
 
-#: ../includes/Elements/Interactive_Card.php:148, ../includes/Elements/Post_Carousel.php:122, ../includes/Elements/Team_Member_Carousel.php:584, ../includes/Elements/Testimonial_Slider.php:161, ../includes/Elements/Testimonial_Slider.php:238
+#: ../includes/Elements/Interactive_Card.php:148, ../includes/Elements/Testimonial_Slider.php:161
 msgid "1"
 msgstr ""
 
@@ -3683,26 +3683,6 @@ msgstr ""
 msgid "Post Carousel"
 msgstr ""
 
-#: ../includes/Elements/Post_Carousel.php:123, ../includes/Elements/Team_Member_Carousel.php:585, ../includes/Elements/Testimonial_Slider.php:162, ../includes/Elements/Testimonial_Slider.php:239
-msgid "2"
-msgstr ""
-
-#: ../includes/Elements/Post_Carousel.php:124, ../includes/Elements/Team_Member_Carousel.php:586, ../includes/Elements/Testimonial_Slider.php:163, ../includes/Elements/Testimonial_Slider.php:240
-msgid "3"
-msgstr ""
-
-#: ../includes/Elements/Post_Carousel.php:125, ../includes/Elements/Team_Member_Carousel.php:587, ../includes/Elements/Testimonial_Slider.php:164, ../includes/Elements/Testimonial_Slider.php:241
-msgid "4"
-msgstr ""
-
-#: ../includes/Elements/Post_Carousel.php:126, ../includes/Elements/Team_Member_Carousel.php:588, ../includes/Elements/Testimonial_Slider.php:165, ../includes/Elements/Testimonial_Slider.php:242
-msgid "5"
-msgstr ""
-
-#: ../includes/Elements/Post_Carousel.php:127, ../includes/Elements/Team_Member_Carousel.php:589, ../includes/Elements/Testimonial_Slider.php:243
-msgid "6"
-msgstr ""
-
 #: ../includes/Elements/Post_Carousel.php:459, ../includes/Elements/Post_List.php:1397
 msgid "Post Style"
 msgstr ""
@@ -4729,6 +4709,22 @@ msgstr ""
 
 #: ../includes/Elements/Testimonial_Slider.php:157
 msgid "Rating Number"
+msgstr ""
+
+#: ../includes/Elements/Testimonial_Slider.php:162
+msgid "2"
+msgstr ""
+
+#: ../includes/Elements/Testimonial_Slider.php:163
+msgid "3"
+msgstr ""
+
+#: ../includes/Elements/Testimonial_Slider.php:164
+msgid "4"
+msgstr ""
+
+#: ../includes/Elements/Testimonial_Slider.php:165
+msgid "5"
 msgstr ""
 
 #: ../includes/Elements/Testimonial_Slider.php:388
