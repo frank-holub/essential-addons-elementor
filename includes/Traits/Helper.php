@@ -527,4 +527,21 @@ trait Helper
 
 		return $valid;
 	}
+
+    /**
+     * Adds extra protocols to wp allowed tags
+     * @param array $protocols
+     * @return array
+     * @since 4.4.11
+     */
+    public static function eael_wp_allowed_tags( $protocols = array() ){
+        $eael_wp_allowed_protocols = wp_allowed_protocols();
+        if(is_array($protocols) && count($protocols)){
+            foreach ($protocols as $protocol){
+                $eael_wp_allowed_protocols[] = $protocol;
+            }
+        }
+
+        return array_unique($eael_wp_allowed_protocols);
+    }
 }

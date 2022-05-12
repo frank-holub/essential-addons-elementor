@@ -1256,3 +1256,15 @@
       -ms-transform: none;
           transform: none;
 }
+.theme-woodmart .amount {
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+.theme-woodmart del .amount {
+  color: inherit;
+  font-weight: inherit;
+}
+.theme-woodmart .price del {
+  color: inherit;
+}

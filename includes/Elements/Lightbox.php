@@ -62,7 +62,7 @@ class Lightbox extends Widget_Base
 
 
 
-	protected function _register_controls()
+	protected function register_controls()
 	{
 
         $this->content_tab();

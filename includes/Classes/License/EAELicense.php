@@ -222,6 +222,13 @@ class EAELicense {
 		if ( null === $expiration ) {
 			$expiration = $this->dev_mode ? 10 : 12 * HOUR_IN_SECONDS;
 		}
+
+		if( isset( $license_data->expires ) && $license_data->expires === 'lifetime' ) {
+			$expiration = 0;
+		} elseif( isset( $license_data->expires ) ) {
+			$expiration = strtotime( $license_data->expires );
+		}
+
 		set_transient( $this->product_slug . '-license_data', $license_data, $expiration );
 	}
 	/**

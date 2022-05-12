@@ -1670,81 +1670,94 @@ endif;
         return $html;
     }
 
-    public function advanced_data_table_remote_database_integration($settings)
-    {
-        global $wpdb;
+	/**
+	 * advanced_data_table_remote_database_integration
+     * Access remote database using settings info ,after that fetch table data and
+     * Preview in Advance Data Table widget
+     *
+     *
+	 * @param $settings array elementor settings data
+	 *
+     * @access public
+	 * @return array|string|void
+     * @since 3.1.0
+	 */
+	public function advanced_data_table_remote_database_integration( $settings ) {
+		global $wpdb;
 
-        $html = '';
-        $results = [];
+		$html    = '';
+		$results = [];
 
-        // suppress error
-        $wpdb->suppress_errors = true;
+		// suppress error
+		$wpdb->suppress_errors = true;
 
-        // collect data
-        if ($settings['ea_adv_data_table_source'] == 'remote') {
-            if (empty($settings['ea_adv_data_table_source_remote_host']) || empty($settings['ea_adv_data_table_source_remote_username']) || empty($settings['ea_adv_data_table_source_remote_password']) || empty($settings['ea_adv_data_table_source_remote_database'])) {
-                return;
-            }
+		// collect data
+		if ( $settings['ea_adv_data_table_source'] == 'remote' ) {
+			if ( empty( $settings['ea_adv_data_table_source_remote_host'] ) || empty( $settings['ea_adv_data_table_source_remote_username'] ) || empty( $settings['ea_adv_data_table_source_remote_password'] ) || empty( $settings['ea_adv_data_table_source_remote_database'] ) ) {
+				return;
+			}
 
-            if ($settings['ea_adv_data_table_source_remote_connected'] == false) {
-                return;
-            }
+			if ( $settings['ea_adv_data_table_source_remote_connected'] == false ) {
+				return;
+			}
 
-            $conn = new mysqli($settings['ea_adv_data_table_source_remote_host'], $settings['ea_adv_data_table_source_remote_username'], $settings['ea_adv_data_table_source_remote_password'], $settings['ea_adv_data_table_source_remote_database']);
+			$conn = new mysqli( $settings['ea_adv_data_table_source_remote_host'], $settings['ea_adv_data_table_source_remote_username'], $settings['ea_adv_data_table_source_remote_password'], $settings['ea_adv_data_table_source_remote_database'] );
 
-            if ($conn->connect_error) {
-                return "Failed to connect to MySQL: " . $conn->connect_error;
-            } else {
-                if ($settings['ea_adv_data_table_source_remote_query_type'] == 'table') {
-                    $table = $settings['ea_adv_data_table_source_remote_table'];
-                    $query = $conn->query("SELECT * FROM $table");
+			if ( $conn->connect_error ) {
+				return "Failed to connect to MySQL: " . $conn->connect_error;
+			} else {
+				$conn->set_charset( "utf8" );
 
-                    if ($query) {
-                        $results = $query->fetch_all(MYSQLI_ASSOC);
-                    }
-                } else {
+				if ( $settings['ea_adv_data_table_source_remote_query_type'] == 'table' ) {
+					$table = $settings['ea_adv_data_table_source_remote_table'];
+					$query = $conn->query( "SELECT * FROM $table" );
 
-	                if( !$this->eael_valid_select_query( $settings['ea_adv_data_table_source_remote_query'] ) ){
-		                return $results;
-	                }
+					if ( $query ) { //@todo we have to cache data for optimize site speed and mysql query request
+						$results = $query->fetch_all( MYSQLI_ASSOC );
+					}
+				} else {
 
-                    if ($settings['ea_adv_data_table_source_remote_query']) {
-                        $query = $conn->query($settings['ea_adv_data_table_source_remote_query']);
+					if ( ! $this->eael_valid_select_query( $settings['ea_adv_data_table_source_remote_query'] ) ) {
+						return $results;
+					}
 
-                        if ($query) {
-                            $results = $query->fetch_all(MYSQLI_ASSOC);
-                        }
-                    }
-                }
+					if ( $settings['ea_adv_data_table_source_remote_query'] ) {
+						$query = $conn->query( $settings['ea_adv_data_table_source_remote_query'] );
 
-                $conn->close();
-            }
-        }
+						if ( $query ) {
+							$results = $query->fetch_all( MYSQLI_ASSOC );
+						}
+					}
+				}
 
-        if (!empty($results)) {
-            $html .= '<thead><tr>';
-            foreach (array_keys($results[0]) as $key => $th) {
-                $style = isset($settings['ea_adv_data_table_dynamic_th_width']) && isset($settings['ea_adv_data_table_dynamic_th_width'][$key]) ? ' style="width:' . $settings['ea_adv_data_table_dynamic_th_width'][$key] . '"' : '';
-                $html .= '<th' . $style . '>' . $th . '</th>';
-            }
-            $html .= '</tr></thead>';
+				$conn->close();
+			}
+		}
 
-            $html .= '<tbody>';
-            foreach ($results as $tr) {
-                $html .= '<tr>';
-                foreach ($tr as $td) {
-                    $html .= '<td>' . $td . '</td>';
-                }
-                $html .= '</tr>';
-            }
-            $html .= '</tbody>';
-        }
+		if ( ! empty( $results ) ) {
+			$html .= '<thead><tr>';
+			foreach ( array_keys( $results[0] ) as $key => $th ) {
+				$style = isset( $settings['ea_adv_data_table_dynamic_th_width'] ) && isset( $settings['ea_adv_data_table_dynamic_th_width'][ $key ] ) ? ' style="width:' . $settings['ea_adv_data_table_dynamic_th_width'][ $key ] . '"' : '';
+				$html  .= '<th' . $style . '>' . $th . '</th>';
+			}
+			$html .= '</tr></thead>';
 
-        // enable error reporting
-        $wpdb->suppress_errors = false;
+			$html .= '<tbody>';
+			foreach ( $results as $tr ) {
+				$html .= '<tr>';
+				foreach ( $tr as $td ) {
+					$html .= '<td>' . $td . '</td>';
+				}
+				$html .= '</tr>';
+			}
+			$html .= '</tbody>';
+		}
 
-        return $html;
-    }
+		// enable error reporting
+		$wpdb->suppress_errors = false;
+
+		return $html;
+	}
 
     public function advanced_data_table_google_sheets_integration($settings)
     {
@@ -1886,6 +1899,7 @@ endif;
         $table_settings = get_post_meta($table_id, '_tablepress_table_options', true);
         $table_settings = json_decode($table_settings, true);
 
+        //return do_shortcode('[table id=1 /]');
         if (!empty($results)) {
             if (!empty($table_settings) && isset($table_settings['table_head']) && $table_settings['table_head'] == true) {
                 $html .= '<thead><tr>';
@@ -1899,12 +1913,45 @@ endif;
             }
 
             $html .= '<tbody>';
-            foreach ($results as $tr) {
+            foreach ($results as $index =>  $tr) {
                 $html .= '<tr>';
-                foreach ($tr as $td) {
-                    $html .= '<td>' . $td . '</td>';
+	            $col = false;
+                $row = [];
+
+                // for rowspan support
+	            if ( ! empty( $results[ $index + 1 ] ) ) {
+		            foreach ( $results[ $index + 1 ] as $next_key => $previous ) {
+			            if ( $previous == '#rowspan#' ) {
+				            $row[] = $next_key;
+			            }
+		            }
+	            }
+
+	            foreach ($tr as $key => $td) {
+	                $combine_cells = '';
+
+	                if($col){
+		                $col = false;
+	                    continue;
+	                }
+
+		            if ( ! empty( $tr[ $key + 1 ] ) && $tr[ $key + 1 ]=='#colspan#' ) {
+			            $combine_cells = 'colspan=2';
+			            $col = true;
+		            }
+
+		            if ( in_array( $key, $row ) ) {
+			            $combine_cells = 'rowspan=2';
+		            }
+
+		            if ( $td == '#rowspan#' ) {
+			            continue;
+		            }
+
+	                $html .= '<td ' . $combine_cells . '>' . $td . '</td>';
                 }
                 $html .= '</tr>';
+
             }
             $html .= '</tbody>';
         }
@@ -2699,7 +2746,7 @@ endif;
                 'raw' => sprintf(__('Facebook API keys are missing. Please add them from %sDashboard >> Essential Addons >> Elements >> Login | Register Form %sSettings', 'essential-addons-for-elementor-lite'), '<strong>', '</strong>'),
                 'content_classes' => 'eael-warning',
                 'condition' => [
-                    'enable_google_login' => 'yes',
+                    'enable_fb_login' => 'yes',
                 ],
             ]);
         }

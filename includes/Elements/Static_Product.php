@@ -67,7 +67,7 @@ class Static_Product extends Widget_Base
         return 'https://essential-addons.com/elementor/docs/static-product/';
     }
 
-    protected function _register_controls()
+    protected function register_controls()
     {
         $this->start_controls_section(
             'eael_section_layout_static_product',

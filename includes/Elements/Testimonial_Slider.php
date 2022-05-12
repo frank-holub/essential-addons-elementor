@@ -76,7 +76,252 @@ class Testimonial_Slider extends Widget_Base
 	}
 
 
-	protected function _register_controls()
+	/**
+	 * Testimonial slider control register here
+	 *
+	 * @since 5.0.1
+	 */
+	public function carousel_setting() {
+
+		$this->start_controls_section(
+			'section_additional_options',
+			[
+				'label' => __( 'Carousel Settings', 'essential-addons-elementor' ),
+			]
+		);
+
+		$this->add_control(
+			'carousel_effect',
+			[
+				'label'       => __( 'Effect', 'essential-addons-elementor' ),
+				'description' => __( 'Sets transition effect', 'essential-addons-elementor' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'slide',
+				'options'     => [
+					'slide'     => __( 'Slide', 'essential-addons-elementor' ),
+					'fade'      => __( 'Fade', 'essential-addons-elementor' ),
+					'cube'      => __( 'Cube', 'essential-addons-elementor' ),
+					'coverflow' => __( 'Coverflow', 'essential-addons-elementor' ),
+					'flip'      => __( 'Flip', 'essential-addons-elementor' ),
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'items',
+			[
+				'label'              => __( 'Visible Items', 'essential-addons-elementor' ),
+				'type'               => Controls_Manager::SLIDER,
+				'default'            => [ 'size' => 1 ],
+				'tablet_default'     => [ 'size' => 1 ],
+				'mobile_default'     => [ 'size' => 1 ],
+				'range'              => [
+					'px' => [
+						'min'  => 1,
+						'max'  => 10,
+						'step' => 1,
+					],
+				],
+				'size_units'         => '',
+				'frontend_available' => true,
+				'condition'          => [
+					'carousel_effect' => [ 'slide', 'coverflow' ]
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'margin',
+			[
+				'label'      => __( 'Items Gap', 'essential-addons-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'default'    => [ 'size' => 10 ],
+				'range'      => [
+					'px' => [
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					],
+				],
+				'size_units' => '',
+				'condition'  => [
+					'carousel_effect' => [ 'slide', 'coverflow' ]
+				]
+			]
+		);
+
+		$this->add_control(
+			'slider_speed',
+			[
+				'label'       => __( 'Slider Speed', 'essential-addons-elementor' ),
+				'description' => __( 'Duration of transition between slides (in ms)', 'essential-addons-elementor' ),
+				'type'        => Controls_Manager::SLIDER,
+				'default'     => [ 'size' => 1000 ],
+				'range'       => [
+					'px' => [
+						'min'  => 100,
+						'max'  => 3000,
+						'step' => 1,
+					],
+				],
+				'size_units'  => '',
+			]
+		);
+
+		$this->add_control(
+			'autoplay',
+			[
+				'label'        => __( 'Autoplay', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'autoplay_speed',
+			[
+				'label'      => __( 'Autoplay Speed', 'essential-addons-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'default'    => [ 'size' => 2000 ],
+				'range'      => [
+					'px' => [
+						'min'  => 500,
+						'max'  => 5000,
+						'step' => 1,
+					],
+				],
+				'size_units' => '',
+				'condition'  => [
+					'autoplay' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pause_on_hover',
+			[
+				'label'        => __( 'Pause On Hover', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '',
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+				'condition'    => [
+					'autoplay' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'infinite_loop',
+			[
+				'label'        => __( 'Infinite Loop', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'grab_cursor',
+			[
+				'label'        => __( 'Grab Cursor', 'essential-addons-elementor' ),
+				'description'  => __( 'Shows grab cursor when you hover over the slider', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '',
+				'label_on'     => __( 'Show', 'essential-addons-elementor' ),
+				'label_off'    => __( 'Hide', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'navigation_heading',
+			[
+				'label'     => __( 'Navigation', 'essential-addons-elementor' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'arrows',
+			[
+				'label'        => __( 'Arrows', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'navigation_arrow_position',
+			[
+				'label'     => __( 'Navigation arrow position', 'essential-addons-elementor' ),
+				'type'      => Controls_Manager::SELECT2,
+				'default'   => 'default',
+				'options'   => [
+					'default'            => __( 'Default', 'plugin-domain' ),
+					'outside-of-the-box' => __( 'Outside of the box', 'plugin-domain' ),
+				],
+				'condition' => [
+					'arrows' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'dots',
+			[
+				'label'        => __( 'Dots', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'image_dots',
+			[
+				'label'        => __( 'Image Dots', 'essential-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'    => __( 'No', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+				'condition'    => [
+					'dots' => 'yes'
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'image_dots_visibility',
+			[
+				'label'        => __( 'Image Dots Visibility', 'essential-addons-elementor' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'essential-addons-elementor' ),
+				'label_off'    => __( 'Hide', 'essential-addons-elementor' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'condition'    => [
+					'image_dots' => 'yes'
+				]
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	protected function register_controls()
 	{
 
 
@@ -205,243 +450,10 @@ class Testimonial_Slider extends Widget_Base
 		/**
 		 * Content Tab: Carousel Settings
 		 */
-		$this->start_controls_section(
-			'section_additional_options',
-			[
-				'label'                 => __('Carousel Settings', 'essential-addons-elementor'),
-			]
-		);
 
-		$this->add_control(
-			'carousel_effect',
-			[
-				'label'                 => __('Effect', 'essential-addons-elementor'),
-				'description'           => __('Sets transition effect', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SELECT,
-				'default'               => 'slide',
-				'options'               => [
-					'slide'     => __('Slide', 'essential-addons-elementor'),
-					'fade'      => __('Fade', 'essential-addons-elementor'),
-					'cube'      => __('Cube', 'essential-addons-elementor'),
-					'coverflow' => __('Coverflow', 'essential-addons-elementor'),
-					'flip'      => __('Flip', 'essential-addons-elementor'),
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'items',
-			[
-				'label'                 => __('Visible Items', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => 1],
-				'tablet_default'        => ['size' => 1],
-				'mobile_default'        => ['size' => 1],
-				'range'                 => [
-					'px' => [
-						'min'   => 1,
-						'max'   => 10,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => '',
-				'condition' => [
-					'carousel_effect' => ['slide', 'coverflow']
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-			'margin',
-			[
-				'label'                 => __('Items Gap', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => 10],
-				'range'                 => [
-					'px' => [
-						'min'   => 0,
-						'max'   => 100,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => '',
-				'condition' => [
-					'carousel_effect' => ['slide', 'coverflow']
-				]
-			]
-		);
-
-		$this->add_control(
-			'slider_speed',
-			[
-				'label'                 => __('Slider Speed', 'essential-addons-elementor'),
-				'description'           => __('Duration of transition between slides (in ms)', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => 1000],
-				'range'                 => [
-					'px' => [
-						'min'   => 100,
-						'max'   => 3000,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => '',
-			]
-		);
-
-		$this->add_control(
-			'autoplay',
-			[
-				'label'                 => __('Autoplay', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'autoplay_speed',
-			[
-				'label'                 => __('Autoplay Speed', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => 2000],
-				'range'                 => [
-					'px' => [
-						'min'   => 500,
-						'max'   => 5000,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => '',
-				'condition'         => [
-					'autoplay'      => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'pause_on_hover',
-			[
-				'label'                 => __('Pause On Hover', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => '',
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-				'condition'         => [
-					'autoplay'      => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'infinite_loop',
-			[
-				'label'                 => __('Infinite Loop', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'grab_cursor',
-			[
-				'label'                 => __('Grab Cursor', 'essential-addons-elementor'),
-				'description'           => __('Shows grab cursor when you hover over the slider', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => '',
-				'label_on'          => __('Show', 'essential-addons-elementor'),
-				'label_off'         => __('Hide', 'essential-addons-elementor'),
-				'return_value'      => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'navigation_heading',
-			[
-				'label'                 => __('Navigation', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::HEADING,
-				'separator'             => 'before',
-			]
-		);
-
-		$this->add_control(
-			'arrows',
-			[
-				'label'                 => __('Arrows', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'navigation_arrow_position',
-			[
-				'label'                 => __('Navigation arrow position', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SELECT2,
-				'default' => 'default',
-				'options' => [
-					'default'            => __( 'Default', 'plugin-domain' ),
-					'outside-of-the-box' => __( 'Outside of the box', 'plugin-domain' ),
-				],
-				'condition' => [
-					'arrows'    => 'yes'
-				]
-			]
-		);
-
-		$this->add_control(
-			'dots',
-			[
-				'label'                 => __('Dots', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'image_dots',
-			[
-				'label'                 => __('Image Dots', 'essential-addons-elementor'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'label_on'              => __('Yes', 'essential-addons-elementor'),
-				'label_off'             => __('No', 'essential-addons-elementor'),
-				'return_value'          => 'yes',
-				'condition' => [
-					'dots'    => 'yes'
-				]
-			]
-		);
+		$this->carousel_setting();
 
 
-		$this->add_responsive_control(
-			'image_dots_visibility',
-			[
-				'label' => __('Image Dots Visibility', 'essential-addons-elementor'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __('Show', 'essential-addons-elementor'),
-				'label_off' => __('Hide', 'essential-addons-elementor'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-				'condition' => [
-					'image_dots'    => 'yes'
-				]
-			]
-		);
-
-
-		$this->end_controls_section();
 
 
 		$this->start_controls_section(
@@ -1863,13 +1875,15 @@ class Testimonial_Slider extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		$visibility = '';
-		if ($settings['image_dots_visibility'] !== 'yes') {
+		if ( empty( $settings['image_dots_visibility'] ) ) {
 			$visibility .= ' eael_gallery_pagination_hide_on_desktop';
 		}
-		if ( empty( $settings['image_dots_visibility_mobile'] ) || $settings['image_dots_visibility_mobile'] !== 'yes' ) {
+
+		if ( empty( $settings['image_dots_visibility_mobile'] )) {
 			$visibility .= ' eael_gallery_pagination_hide_on_mobile';
 		}
-		if ( empty( $settings['image_dots_visibility_tablet'] ) || $settings['image_dots_visibility_tablet'] !== 'yes' ) {
+
+		if ( empty( $settings['image_dots_visibility_tablet'] )) {
 			$visibility .= ' eael_gallery_pagination_hide_on_tablet';
 		}
 
@@ -1895,9 +1909,5 @@ class Testimonial_Slider extends Widget_Base
             </div>
 		<?php
 		endif;
-	}
-
-	protected function content_template()
-	{
 	}
 }

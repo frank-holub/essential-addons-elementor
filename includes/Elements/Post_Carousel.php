@@ -76,7 +76,7 @@ class Post_Carousel extends Widget_Base
 		];
 	}
 
-	protected function _register_controls()
+	protected function register_controls()
 	{
 		/**
 		 * Query And Layout Controls!
@@ -121,6 +121,7 @@ class Post_Carousel extends Widget_Base
 				'default'        => ['size' => 3],
 				'tablet_default' => ['size' => 2],
 				'mobile_default' => ['size' => 1],
+				'frontend_available' => true,
 				'range'          => [
 					'px' => [
 						'min'  => 1,
@@ -178,18 +179,18 @@ class Post_Carousel extends Widget_Base
 		$this->add_control(
 			'slider_speed',
 			[
-				'label'       => __('Slider Speed', 'essential-addons-elementor'),
-				'description' => __('Duration of transition between slides (in ms)', 'essential-addons-elementor'),
-				'type'        => Controls_Manager::SLIDER,
-				'default'     => ['size' => 400],
-				'range'       => [
+				'label'              => __( 'Slider Speed', 'essential-addons-elementor' ),
+				'description'        => __( 'Duration of transition between slides (in ms)', 'essential-addons-elementor' ),
+				'type'               => Controls_Manager::SLIDER,
+				'default'            => [ 'size' => 400 ],
+				'range'              => [
 					'px' => [
 						'min'  => 100,
 						'max'  => 3000,
 						'step' => 1,
 					],
 				],
-				'size_units'  => '',
+				'size_units'         => '',
 			]
 		);
 
@@ -1613,8 +1614,10 @@ class Post_Carousel extends Widget_Base
 		$args = Helper::get_dynamic_args($settings, $args);
 
 		if ( ! in_array( $settings['post_type'], [ 'post', 'page', 'product', 'by_id', 'source_dynamic' ] ) ) {
-			$settings['eael_post_terms'] = $settings["eael_{$settings['post_type']}_terms"];
-		}
+            $settings['eael_post_terms'] = $settings["eael_{$settings['post_type']}_terms"];
+        } elseif ( $settings['post_type'] === 'product' ) {
+            $settings['eael_post_terms'] = $settings['eael_post_terms'] === 'category' ? 'product_cat' : ( $settings['eael_post_terms'] === 'tags' ? 'product_tag' : $settings['eael_post_terms'] );
+        }
 
 		$this->add_render_attribute(
 			'eael-post-carousel-container',

@@ -1012,6 +1012,9 @@ $config = [
         'xd-copy' => [
 	        'class' => '\Essential_Addons_Elementor\Pro\Extensions\XD_Copy',
         ],
+        'conditional-display' => [
+	        'class' => '\Essential_Addons_Elementor\Pro\Extensions\Conditional_Display',
+        ],
     ],
 ];
 

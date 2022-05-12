@@ -60,7 +60,7 @@ class Google_Map extends Widget_Base
 		return 'https://essential-addons.com/elementor/docs/advanced-google-map/';
 	}
 
-	protected function _register_controls()
+	protected function register_controls()
 	{
 		/**
 		 * Google Map General Settings

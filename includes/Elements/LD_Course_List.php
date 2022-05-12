@@ -81,7 +81,7 @@ class LD_Course_List extends Widget_Base
         return true;
     }
 
-    protected function _register_controls()
+    protected function register_controls()
     {
         if (!defined('LEARNDASH_VERSION')) {
             $this->start_controls_section(
