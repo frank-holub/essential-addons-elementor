@@ -10,6 +10,7 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
+use Essential_Addons_Elementor\Classes\Helper;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -401,7 +402,7 @@ class One_Page_Navigation extends Widget_Base
             [
                 'label'                 => __('Size', 'essential-addons-elementor'),
                 'type'                  => Controls_Manager::SLIDER,
-                'default'               => ['size' => '10'],
+                'default'               => ['size' => '10', 'unit'=>'px'],
                 'range'                 => [
                     'px' => [
                         'min'   => 5,
@@ -412,6 +413,8 @@ class One_Page_Navigation extends Widget_Base
                 'size_units'            => ['px'],
                 'selectors'             => [
                     '{{WRAPPER}} .eael-nav-dot' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} img.eael-nav-dot' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} svg.eael-nav-dot' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}};line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -476,6 +479,7 @@ class One_Page_Navigation extends Widget_Base
                 'default'               => '',
                 'selectors'             => [
                     '{{WRAPPER}} .eael-nav-dot' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} svg.eael-nav-dot' => 'fill: {{VALUE}}',
                 ],
             ]
         );
@@ -532,6 +536,7 @@ class One_Page_Navigation extends Widget_Base
                 'default'               => '',
                 'selectors'             => [
                     '{{WRAPPER}} .eael-one-page-nav-item .eael-nav-dot-wrap:hover .eael-nav-dot' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-one-page-nav-item .eael-nav-dot-wrap:hover svg.eael-nav-dot' => 'fill: {{VALUE}}',
                 ],
             ]
         );
@@ -577,6 +582,7 @@ class One_Page_Navigation extends Widget_Base
                 'default'               => '',
                 'selectors'             => [
                     '{{WRAPPER}} .eael-one-page-nav-item.active .eael-nav-dot' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-one-page-nav-item.active svg.eael-nav-dot' => 'fill: {{VALUE}}',
                 ],
             ]
         );
@@ -719,7 +725,7 @@ class One_Page_Navigation extends Widget_Base
                 foreach ($settings['nav_dots'] as $index => $dot) {
                     $eael_section_title = $dot['section_title'];
                     $eael_section_id = $dot['section_id'];
-                    $eael_dot_icon = ((isset($settings['__fa4_migrated']['dot_icon_new']) || empty($dot['dot_icon']) || !empty($dot['dot_icon_new']['value'])) ? $dot['dot_icon_new']['value'] : $dot['dot_icon']);
+                    $eael_dot_icon = ((isset($settings['__fa4_migrated']['dot_icon_new']) || empty($dot['dot_icon']) || !empty($dot['dot_icon_new']['value'])) ? Helper::get_render_icon($dot['dot_icon_new'], ['class'=>'eael-nav-dot']) : '<i class="'.$dot['dot_icon'].' eael-nav-dot"></i>');
 
                     if ($settings['nav_tooltip'] == 'yes') {
                         $eael_dot_tooltip = sprintf('<span %1$s><span class="eael-nav-dot-tooltip-content">%2$s</span></span>', $this->get_render_attribute_string('tooltip'), $eael_section_title);
@@ -730,7 +736,7 @@ class One_Page_Navigation extends Widget_Base
                     if (isset($eael_dot_icon['url'])) {
                         printf('<li class="eael-one-page-nav-item">%1$s<a href="#" data-row-id="%2$s"><span class="eael-nav-dot-wrap"><img class="eael-nav-dot" src="%3$s" alt="%4$s" /></span></a></li>', $eael_dot_tooltip, $eael_section_id, $eael_dot_icon['url'], esc_attr(get_post_meta($eael_dot_icon['id'], '_wp_attachment_image_alt', true)));
                     } else {
-                        printf('<li class="eael-one-page-nav-item">%1$s<a href="#" data-row-id="%2$s"><span class="eael-nav-dot-wrap"><span class="eael-nav-dot %3$s"></span></span></a></li>', $eael_dot_tooltip, $eael_section_id, $eael_dot_icon);
+                        printf('<li class="eael-one-page-nav-item">%1$s<a href="#" data-row-id="%2$s"><span class="eael-nav-dot-wrap">%3$s</span></a></li>', $eael_dot_tooltip, $eael_section_id, $eael_dot_icon);
                     }
 
                     $i++;

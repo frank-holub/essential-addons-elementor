@@ -25,7 +25,7 @@ use Essential_Addons_Elementor\Pro\Classes\Helper;
                     <img alt="" src="<?php echo \Elementor\Utils::get_placeholder_image_src(); ?>"/>
                 <?php endif; ?>
 
-                <?php if($price && $settings['show_price'] === 'true' && $image[0]): ?><div class="price-ticker-tag"><?php echo esc_attr($price); ?></div><?php endif; ?>
+                <?php if($price && $settings['show_price'] === 'true' && $image): ?><div class="price-ticker-tag"><?php echo esc_attr($price); ?></div><?php endif; ?>
             </a>
         <?php endif; ?>
 

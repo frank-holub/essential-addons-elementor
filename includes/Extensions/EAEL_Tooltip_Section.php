@@ -8,8 +8,6 @@ if (!defined('ABSPATH')) {
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Color;
-use \Elementor\Core\Schemes\Typography;
 
 class EAEL_Tooltip_Section
 {
@@ -242,7 +240,6 @@ class EAEL_Tooltip_Section
             [
                 'name' => 'eael_tooltip_section_typography',
                 'selector' => '.tippy-popper[data-tippy-popper-id="{{ID}}"] .tippy-tooltip',
-                'scheme' => Typography::TYPOGRAPHY_3,
                 'separator' => 'after',
                 'condition' => [
                     'eael_tooltip_section_enable!' => '',
@@ -425,28 +422,32 @@ class EAEL_Tooltip_Section
                 jQuery(window).on('elementor/frontend/init', function() {
                     var $currentTooltip = '#eael-section-tooltip-<?php echo $element->get_id(); ?>';
 
-                    tippy($currentTooltip, {
-                        content: '<?php echo (str_replace("'", "\'", $content)); ?>',
-                        placement: '<?php echo $position; ?>',
-                        animation: '<?php echo $animation; ?>',
-                        arrow: '<?php echo $arrow; ?>',
-                        arrowType: '<?php echo $arrowType; ?>',
-                        duration: '<?php echo $duration; ?>',
-                        distance: '<?php echo $distance; ?>',
-                        delay: '<?php echo $delay; ?>',
-                        size: '<?php echo $size; ?>',
-                        trigger: '<?php echo $trigger; ?>',
-                        animateFill: false,
-                        flipOnUpdate: true,
-                        interactive: true,
-                        maxWidth: <?php echo $width['size']; ?>,
-                        zIndex: 999,
-                        followCursor: <?php if ($followCursor !== 'false') { echo "'$followCursor'"; } else { ?> false <?php } ?>,
-                        onShow(instance) {
-                            var tippyPopper = instance.popper;
-                            jQuery(tippyPopper).attr('data-tippy-popper-id', '<?php echo $data['id']; ?>');
-                        }
-                    });
+                    if (typeof tippy !== 'undefined') {
+                        tippy($currentTooltip, {
+                            content: '<?php echo( str_replace( "'", "\'", $content ) ); ?>',
+                            placement: '<?php echo $position; ?>',
+                            animation: '<?php echo $animation; ?>',
+                            arrow: '<?php echo $arrow; ?>',
+                            arrowType: '<?php echo $arrowType; ?>',
+                            duration: '<?php echo $duration; ?>',
+                            distance: '<?php echo $distance; ?>',
+                            delay: '<?php echo $delay; ?>',
+                            size: '<?php echo $size; ?>',
+                            trigger: '<?php echo $trigger; ?>',
+                            animateFill: false,
+                            flipOnUpdate: true,
+                            interactive: true,
+                            maxWidth: <?php echo $width['size']; ?>,
+                            zIndex: 999,
+                            followCursor: <?php if ($followCursor !== 'false') {
+				                echo "'$followCursor'";
+			                } else { ?> false <?php } ?>,
+                            onShow(instance) {
+                                var tippyPopper = instance.popper;
+                                jQuery(tippyPopper).attr('data-tippy-popper-id', '<?php echo $data['id']; ?>');
+                            }
+                        });
+                    }
                 });
             </script>
         <?php }

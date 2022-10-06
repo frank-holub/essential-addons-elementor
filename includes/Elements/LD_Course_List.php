@@ -515,6 +515,19 @@ class LD_Course_List extends Widget_Base
             );
 
             $this->add_control(
+                'eael_course_filter_not_found_label_text',
+                [
+                    'label' => esc_html__('Not Found Label', 'essential-addons-elementor'),
+                    'type' => Controls_Manager::TEXT,
+                    'dynamic'     => [ 'active' => true ],
+                    'default' => esc_html__('No Courses Found!', 'essential-addons-elementor'),
+                    'condition' => [
+                        'eael_course_filter_show' => 'true',
+                    ],
+                ]
+            );
+
+            $this->add_control(
                 'show_author_meta',
                 [
                     'label'       => __('Author Meta', 'essential-addons-elementor'),
@@ -2249,7 +2262,7 @@ class LD_Course_List extends Widget_Base
         }
 
         $legacy_meta = get_post_meta($course_id, '_sfwd-courses', true);
-        $price_text = $legacy_meta['sfwd-courses_course_price'] ? $legacy_meta['sfwd-courses_course_price'] : 'Free';
+        $price_text = isset( $legacy_meta['sfwd-courses_course_price'] ) ? $legacy_meta['sfwd-courses_course_price'] : 'Free';
 
         $class       = 'eael_ld_course_list_ribbon';
         $course_class = '';
@@ -2361,7 +2374,11 @@ class LD_Course_List extends Widget_Base
             $html = $this->get_course_filter_tabs($settings);
         }
 
+        $no_course_found_label_text = ! empty( $settings['eael_course_filter_not_found_label_text'] ) ? Helper::eael_wp_kses( $settings['eael_course_filter_not_found_label_text'] ) : esc_html( 'No Courses Found!', 'essential-addons-elementor' );
+        $no_course_found_label_class = ! empty( $courses ) ? 'eael-d-none' : 'eael-d-block';
+
         ob_start();
+        $html .= '<div class="eael-learndash-no-course-found ' . esc_attr( $no_course_found_label_class ) . ' eael-align-center">' . esc_html( $no_course_found_label_text ) . '</div>';
         $html .= '<div ' . $this->get_render_attribute_string('eael-learn-dash-wrapper') . '>';
         if ($courses) {
             foreach ($courses as $course) {
@@ -2388,13 +2405,21 @@ class LD_Course_List extends Widget_Base
                 $excerpt_length = $settings['excerpt_length'] ? $settings['excerpt_length'] : null;
                 
                 $tags = wp_get_post_terms($course->ID, 'ld_course_tag');
-                $tags_with_prefix = array_map(function($tag) { return 'tag-' . $tag->slug; }, $tags);
-                $tags_as_string = implode(' ', $tags_with_prefix);
+	            $tags_as_string = '';
+	            if ( ! is_wp_error( $tags ) ) {
+		            $tags_with_prefix = array_map( function ( $tag ) {
+			            return 'tag-' . $tag->slug;
+		            }, $tags );
+		            $tags_as_string   = implode( ' ', $tags_with_prefix );
+	            }
 
                 $cats = wp_get_post_terms($course->ID, 'ld_course_category');
-                $cats_with_prefix = array_map(function($cat) { return 'cat-' . $cat->slug; }, $cats);
-                $cats_as_string = implode(' ', $cats_with_prefix);
-                
+	            $cats_as_string = '';
+	            if( ! is_wp_error( $cats ) ){
+		            $cats_with_prefix = array_map(function($cat) { return 'cat-' . $cat->slug; }, $cats);
+		            $cats_as_string = implode(' ', $cats_with_prefix);
+	            }
+
                 $price = $legacy_meta['sfwd-courses_course_price'] ? $legacy_meta['sfwd-courses_course_price'] : 'Free';
 
                 $duration_in_seconds = floatval( get_post_meta($course->ID, '_learndash_course_grid_duration', true) );
@@ -2466,7 +2491,7 @@ class LD_Course_List extends Widget_Base
                                     }
                                 };
 
-                                // init isotope
+                                //init isotope
                                 var $ld_gallery = $(".eael-learndash-wrapper", $scope).isotope($settings);
 
                                 // layout gal, while images are loading
@@ -2486,11 +2511,26 @@ class LD_Course_List extends Widget_Base
 
                                 if( filterClass != '*' ){
                                     $('.eael-learn-dash-course', $scope).css('display', 'none');
-                                    $('.eael-learn-dash-course'+filterValue, $scope).css('display', 'block').css('clear', 'none');
-                                }else {
-                                    $('.eael-learn-dash-course', $scope).css('display', 'block');
-                                }
+                                    $('.eael-learn-dash-course'+filterValue, $scope).css('display', 'flex');
 
+                                    if( 'masonry' === $layout ){
+                                        $('.eael-learn-dash-course', $scope).removeClass('eael-ld-fit-to-screen-item');
+                                        $('.eael-learn-dash-course'+filterValue, $scope).addClass('eael-ld-fit-to-screen-item');
+                                    }
+
+                                    let notFoundDivClassEditor = 'eael-d-block';
+                                    if( $('.eael-learn-dash-course'+filterValue, $scope).length ){
+                                        notFoundDivClassEditor = 'eael-d-none';
+                                    }
+                                    $('.eael-learndash-no-course-found', $scope).removeClass('eael-d-none').removeClass('eael-d-block').addClass(notFoundDivClassEditor);
+                                }else {
+                                    $('.eael-learn-dash-course', $scope).css('display', 'flex');
+                                    if( 'masonry' === $layout ){
+                                        $('.eael-learn-dash-course', $scope).removeClass('eael-ld-fit-to-screen-item').addClass('eael-ld-fit-to-screen-item');
+                                    }
+
+                                    $('.eael-learndash-no-course-found', $scope).removeClass('eael-d-none').removeClass('eael-d-block').addClass('eael-d-none');
+                                }
                             });
 
                         });
@@ -2506,23 +2546,54 @@ class LD_Course_List extends Widget_Base
                                 $this = $(this),
                                 $layout = $this.data('layout-mode');
 
+                            let firstClick = 0;
                             $scope.on("click", ".control", function (e) {
                                 e.preventDefault();
+                                if( ! firstClick ){
+                                    firstClick = 1;
+                                    $(this).trigger('click');
+                                }
+
                                 let $this = $(this),
                                     filterValue = $this.data("filter");
 
                                 $this.siblings().removeClass("active");
                                 $this.addClass("active");
 
-                                $(".eael-learndash-wrapper", $scope).isotope({ filter: filterValue });
+                                let $eaelLearnDashIsotopeContainer = $(".eael-learndash-wrapper", $scope);
+                                $eaelLearnDashIsotopeContainer.isotope({ 
+                                    filter: filterValue,
+                                    layoutMode: $layout === 'masonry' ? 'masonry' : 'fitRows',
+                                });
+
+                                if($layout === 'fit-to-screen'){
+                                    if( ! ( $eaelLearnDashIsotopeContainer.hasClass( 'eael-ld-fit-to-screen-wrap' ) ) ){
+                                        $eaelLearnDashIsotopeContainer.addClass( "eael-ld-fit-to-screen-wrap" );
+                                    }
+
+                                    if(filterValue !== '*'){
+                                        $(".eael-learndash-wrapper .eael-learn-dash-course", $scope).removeClass("eael-ld-fit-to-screen-item");
+                                        $(".eael-learndash-wrapper .eael-learn-dash-course" + filterValue, $scope).addClass("eael-ld-fit-to-screen-item");
+                                    } else {
+                                        $(".eael-learndash-wrapper .eael-learn-dash-course", $scope).removeClass("eael-ld-fit-to-screen-item").addClass("eael-ld-fit-to-screen-item");
+                                    }
+                                }
+
+                                $eaelLearnDashIsotopeContainer.on( 'layoutComplete', function( event, filteredItems ) {
+                                    let notFoundDivClass = filteredItems.length ? 'eael-d-none' : 'eael-d-block';
+                                    $('.eael-learndash-no-course-found', $scope).removeClass('eael-d-none').removeClass('eael-d-block').addClass(notFoundDivClass);
+                                });
+
+                                if( filterValue === '*' ){
+                                    $('.eael-learndash-no-course-found', $scope).removeClass('eael-d-none').removeClass('eael-d-block').addClass('eael-d-none');
+                                }
                             });
                         });
                     });
                 </script>  
             <?php }
-        } else {
-            $html .= "<h4>" . __('No Courses Found!', 'essential-addons-elementor') . '</h4>';
         }
+        
         $html .= ob_get_clean();
 
         $html .= '</div>';

@@ -54,8 +54,10 @@ if ($settings['eael_fg_grid_style'] == 'eael-hoverer') {
                                             }
                                                 if( isset($settings['eael_section_fg_zoom_icon']['url']) ) {
                                                     echo '<img class="eael-dnmcg-svg-icon" src="'.esc_url($settings['eael_section_fg_zoom_icon']['url']).'" alt="'.esc_attr(get_post_meta($settings['eael_section_fg_zoom_icon']['id'], '_wp_attachment_image_alt', true)).'" />';
-                                                }else {
-                                                    echo '<i class="' . esc_attr($settings['eael_section_fg_zoom_icon']) . '"></i>';
+                                                }else if ( ! empty( $settings['eael_section_fg_zoom_icon_new'] ) ) {
+                                                    \Elementor\Icons_Manager::render_icon($settings['eael_section_fg_zoom_icon_new'], ['aria-hidden' => 'true']);
+                                                } else {
+                                                    echo '<i class="sss ' . esc_attr($settings['eael_section_fg_zoom_icon']) . '"></i>';
                                                 }
                                             echo '</a>';
                                         }
@@ -64,7 +66,9 @@ if ($settings['eael_fg_grid_style'] == 'eael-hoverer') {
                                             echo  '<a href="' . get_the_permalink() . '"'.$linkNofollow . '' . $linkTarget .'>';
                                                 if( isset($settings['eael_section_fg_link_icon']['url'])) {
                                                     echo '<img class="eael-dnmcg-svg-icon" src="'.esc_url($settings['eael_section_fg_link_icon']['url']).'" alt="'.esc_attr(get_post_meta($settings['eael_section_fg_link_icon']['id'], '_wp_attachment_image_alt', true)).'" />';
-                                                }else {
+                                                }else if ( ! empty( $settings['eael_section_fg_link_icon_new'] ) ) {
+                                                    \Elementor\Icons_Manager::render_icon($settings['eael_section_fg_link_icon_new'], ['aria-hidden' => 'true']);
+                                                } else {
                                                     echo '<i class="' . esc_attr($settings['eael_section_fg_link_icon']) . '"></i>';
                                                 }
                                             echo '</a>';
@@ -118,6 +122,8 @@ if ($settings['eael_fg_grid_style'] == 'eael-hoverer') {
                                     }
                                         if( isset($settings['eael_section_fg_zoom_icon']['url']) ) {
                                             echo '<img class="eael-dnmcg-svg-icon" src="'.esc_url($settings['eael_section_fg_zoom_icon']['url']).'" alt="'.esc_attr(get_post_meta($settings['eael_section_fg_zoom_icon']['id'], '_wp_attachment_image_alt', true)).'" />';
+                                        }else if ( ! empty( $settings['eael_section_fg_zoom_icon_new'] ) ) {
+                                            \Elementor\Icons_Manager::render_icon($settings['eael_section_fg_zoom_icon_new'], ['aria-hidden' => 'true']);
                                         }else {
                                             echo '<i class="' . esc_attr($settings['eael_section_fg_zoom_icon']) . '"></i>';
                                         }
@@ -128,6 +134,8 @@ if ($settings['eael_fg_grid_style'] == 'eael-hoverer') {
                                     echo  '<a href="' . get_the_permalink() . '"'.$linkNofollow . '' . $linkTarget .'>';
                                         if( isset($settings['eael_section_fg_link_icon']['url'])) {
                                             echo '<img class="eael-dnmcg-svg-icon" src="'.esc_url($settings['eael_section_fg_link_icon']['url']).'" alt="'.esc_attr(get_post_meta($settings['eael_section_fg_link_icon']['id'], '_wp_attachment_image_alt', true)).'" />';
+                                        }else if ( ! empty( $settings['eael_section_fg_link_icon_new'] ) ) {
+                                            \Elementor\Icons_Manager::render_icon($settings['eael_section_fg_link_icon_new'], ['aria-hidden' => 'true']);
                                         }else {
                                             echo '<i class="' . esc_attr($settings['eael_section_fg_link_icon']) . '"></i>';
                                         }

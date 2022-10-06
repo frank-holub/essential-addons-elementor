@@ -691,7 +691,8 @@ class Content_Timeline extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eael-content-timeline-img i' => 'font-size: {{SIZE}}px;',
-					'{{WRAPPER}} .eael-content-timeline-img .content-timeline-bullet-svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .eael-content-timeline-img .content-timeline-bullet-svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eael-content-timeline-img svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};'
 				],
 			]
 		);
@@ -788,7 +789,8 @@ class Content_Timeline extends Widget_Base
 				'type' => Controls_Manager::COLOR,
 				'default' => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .eael-content-timeline-img i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-content-timeline-img i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-content-timeline-img svg' => 'fill: {{VALUE}}',
 				]
 
 			]
@@ -838,7 +840,8 @@ class Content_Timeline extends Widget_Base
 				'type' => Controls_Manager::COLOR,
 				'default' => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .eael-content-timeline-block.eael-highlight .eael-content-timeline-img i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-content-timeline-block.eael-highlight .eael-content-timeline-img i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eael-content-timeline-block.eael-highlight .eael-content-timeline-img svg' => 'fill: {{VALUE}}',
 				]
 
 			]
@@ -1440,7 +1443,7 @@ class Content_Timeline extends Widget_Base
 		$the_content  = get_the_content( $post_ID );
 		$nofollow     = $settings['read_more_link_nofollow'] ? 'rel="nofollow"' : '';
 		$target_blank = $settings['read_more_link_target_blank'] ? 'target="_blank"' : '';
-		$circle_icon  = $settings['eael_show_image_or_icon'] !== 'icon' ? '' : ( isset( $settings['__fa4_migrated']['eael_content_timeline_circle_icon_new'] ) || empty( $settings['eael_content_timeline_circle_icon'] ) ? $settings['eael_content_timeline_circle_icon_new']['value'] : $settings['eael_content_timeline_circle_icon'] );
+		$circle_icon  = $settings['eael_show_image_or_icon'] !== 'icon' ? '' : ( isset( $settings['__fa4_migrated']['eael_content_timeline_circle_icon_new'] ) || empty( $settings['eael_content_timeline_circle_icon'] ) ? \Essential_Addons_Elementor\Classes\Helper::get_render_icon( $settings['eael_content_timeline_circle_icon_new'] ) : '<i class="'.esc_attr( $settings['eael_content_timeline_circle_icon'] ).'"></i>' );
 
 		$content = [
 			'title'          => get_the_title( $post_ID ),
@@ -1462,7 +1465,7 @@ class Content_Timeline extends Widget_Base
 		    if( isset($circle_icon['url'])) {
 		        $content['image'] = '<img class="content-timeline-bullet-svg" src="'.esc_attr( $circle_icon['url'] ).'" alt="'.esc_attr(get_post_meta($circle_icon['id'], '_wp_attachment_image_alt', true)).'"/>';
 		    }else {
-		        $content['image'] = '<i class="'.esc_attr( $circle_icon ).'"></i>';
+		        $content['image'] = $circle_icon;
 		    }
 		}
 
@@ -1502,7 +1505,7 @@ class Content_Timeline extends Widget_Base
 					if (isset($custom_content['eael_custom_content_timeline_circle_icon_new']['value']['url'])) :
 					$content['image'] = '<img class="content-timeline-bullet-svg" src="'. esc_attr($custom_content['eael_custom_content_timeline_circle_icon_new']['value']['url']) .'" alt="'. esc_attr(get_post_meta($custom_content['eael_custom_content_timeline_circle_icon_new']['value']['id'], '_wp_attachment_image_alt', true)) .'" />';
 				else :
-					$content['image'] = '<i class="'. esc_attr($custom_content['eael_custom_content_timeline_circle_icon_new']['value']) .'"></i>';
+					$content['image'] = \Essential_Addons_Elementor\Classes\Helper::get_render_icon( $custom_content['eael_custom_content_timeline_circle_icon_new'] );# '<i class="'. esc_attr($custom_content['eael_custom_content_timeline_circle_icon_new']['value']) .'"></i>';
 				endif;
 			} else {
 				$content['image'] = '<i class="'. esc_attr($custom_content['eael_custom_content_timeline_circle_icon']) .'"></i>';

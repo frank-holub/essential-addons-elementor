@@ -51,21 +51,22 @@ class Conditional_Display {
 		$element->add_control(
 			'eael_cl_enable',
 			[
-				'label'        => __( 'Enable Conditional Display', 'essential-addons-elementor' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'default'      => '',
-				'label_on'     => __( 'Yes', 'essential-addons-elementor' ),
-				'label_off'    => __( 'No', 'essential-addons-elementor' ),
-				'return_value' => 'yes',
+				'label'          => __( 'Enable Conditional Display', 'essential-addons-elementor' ),
+				'type'           => Controls_Manager::SWITCHER,
+				'default'        => '',
+				'label_on'       => __( 'Yes', 'essential-addons-elementor' ),
+				'label_off'      => __( 'No', 'essential-addons-elementor' ),
+				'return_value'   => 'yes',
+				'style_transfer' => false
 			]
 		);
 
 		$element->add_control(
 			'eael_cl_visibility_action',
 			[
-				'label'     => __( 'Visibility Action', 'essential-addons-elementor' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'options'   => [
+				'label'          => __( 'Visibility Action', 'essential-addons-elementor' ),
+				'type'           => Controls_Manager::CHOOSE,
+				'options'        => [
 					'show'            => [
 						'title' => esc_html__( 'Show', 'essential-addons-elementor' ),
 						'icon'  => 'eaicon-eye-solid',
@@ -79,20 +80,21 @@ class Conditional_Display {
 						'icon'  => 'eaicon-ban-solid',
 					],
 				],
-				'default'   => 'show',
-				'toggle'    => false,
-				'condition' => [
+				'default'        => 'show',
+				'toggle'         => false,
+				'condition'      => [
 					'eael_cl_enable' => 'yes',
-				]
+				],
+				'style_transfer' => false
 			]
 		);
 
 		$element->add_control(
 			'eael_cl_action_apply_if',
 			[
-				'label'     => __( 'Action Applicable if', 'essential-addons-elementor' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'options'   => [
+				'label'          => __( 'Action Applicable if', 'essential-addons-elementor' ),
+				'type'           => Controls_Manager::CHOOSE,
+				'options'        => [
 					'all' => [
 						'title' => esc_html__( 'True All Logic', 'essential-addons-elementor' ),
 						'icon'  => 'eaicon-dice-six-solid',
@@ -102,12 +104,13 @@ class Conditional_Display {
 						'icon'  => 'eaicon-dice-one-solid',
 					],
 				],
-				'default'   => 'all',
-				'toggle'    => false,
-				'condition' => [
+				'default'        => 'all',
+				'toggle'         => false,
+				'condition'      => [
 					'eael_cl_enable'             => 'yes',
 					'eael_cl_visibility_action!' => 'forcefully_hide',
-				]
+				],
+				'style_transfer' => false
 			]
 		);
 
@@ -540,17 +543,18 @@ class Conditional_Display {
 		$element->add_control(
 			'eael_cl_logics',
 			[
-				'label'       => __( 'Logics', 'essential-addons-elementor' ),
-				'type'        => Controls_Manager::REPEATER,
-				'fields'      => $repeater->get_controls(),
-				'default'     => [
+				'label'          => __( 'Logics', 'essential-addons-elementor' ),
+				'type'           => Controls_Manager::REPEATER,
+				'fields'         => $repeater->get_controls(),
+				'default'        => [
 					[
 						'logic_type'           => 'login_status',
 						'login_status_operand' => 'logged_in',
 					],
 				],
-				'title_field' => '{{{ ea_conditional_logic_type_title(logic_type) }}}',
-				'condition'   => [
+				'style_transfer' => false,
+				'title_field'    => '{{{ ea_conditional_logic_type_title(logic_type) }}}',
+				'condition'      => [
 					'eael_cl_enable'             => 'yes',
 					'eael_cl_visibility_action!' => 'forcefully_hide',
 				]

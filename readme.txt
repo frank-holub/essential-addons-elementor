@@ -2,7 +2,7 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
 Tested up to: 6.0
-Stable tag: 5.1.5
+Stable tag: 5.3.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -88,6 +88,45 @@ List of Extensions :
 * Conditional Display
 
 == Changelog ==
+
+= 5.3.1 - 21/09/2022 =
+
+- Fixed: Throwing fatal error due to conflict with custom breakpoints & older Elementor versions
+- Few minor bug fixes & improvements
+
+= 5.3.0 - 21/09/2022 =
+
+- Improved: EA Cross-Domain Copy Paste | Added Full Page Copy/Paste option
+- Improved: EA Login/Register Form | Added MailChimp Integration for registration
+- Improved: EA Login/Register Form | Added ReCaptcha v3 option
+- Improved: EA Testimonial Slider | Added "Read More" Button for long content
+- Improved: EA Advanced Search | Added option to define categories in the Editor and many more
+- Improved: EA Advanced Menu | Added Custom breakpoints for responsive devices
+- Fixed: EA LearnDash Course List | Fit to screen layout not working properly
+- Fixed: EA Advanced Data Table | Number 0 is showing blank for Google Sheets as source
+- Fixed: EA Post Carousel | Custom Break Point not working properly
+- Fixed: EA Advanced Google Map | Themes not working on Polygon type Map
+- Fixed: EA Dynamic Gallery | Items not loading properly if multiple galleries are used in the same page
+- Fixed: EA Smart Post List | Throwing Fatal error when custom post type is selected as source
+- Few minor bug fixes & improvements
+
+= 5.2.1 - 29/08/2022 =
+
+- Fixed: Elementor Paste Style not working when EA Conditional Display is activated
+- Fixed: EA Login | Register Form | Missing translatable strings
+- Few minor bug fixes & improvements
+
+= 5.2.0 - 11/08/2022 =
+
+- Improved: Asset loading mechanism for better performance
+- Few minor bug fixes & improvements
+
+= 5.1.6 - 01/08/2022 =
+
+- Fixed: EA Smart Post List | Filters not working on responsive devices
+- Fixed: EA LearnDash Course List | Undefined index error on legacy mode
+- Fixed EA LearnDash Course List | Throwing Invalid taxonomy error
+- Few minor bug fixes & improvements
 
 = 5.1.5 - 05/07/2022 =
 

@@ -1356,6 +1356,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .eael-filter-gallery-container .caption > a.popup-media > i' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -1398,6 +1399,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                     '{{WRAPPER}} .eael-filter-gallery-container .caption > a.popup-media > i' => 'font-size: {{SIZE}}px;',
                     '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons .eael-dnmcg-svg-icon' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a > i' => 'font-size: {{SIZE}}px;',
+                    '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a svg' => 'width: {{SIZE}}px;height: {{SIZE}}px;line-height: {{SIZE}}px;',
                 ],
             ]
         );
@@ -1453,6 +1455,7 @@ class Dynamic_Filterable_Gallery extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .eael-filter-gallery-container .caption > a.popup-media > i:hover' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .eael-filter-gallery-container .caption .buttons a:hover svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );

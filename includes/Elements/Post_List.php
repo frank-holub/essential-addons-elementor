@@ -1074,7 +1074,7 @@ class Post_List extends Widget_Base
 			    ],
 			    'selectors' => [
 				    '{{WRAPPER}} .post-list-pagination .btn-next-post i, {{WRAPPER}} .post-list-pagination .btn-prev-post i' => 'font-size: {{SIZE}}px;',
-				    '{{WRAPPER}} .post-list-pagination .btn-prev-post svg, {{WRAPPER}} .post-list-pagination .btn-next-post svg' => 'width: {{SIZE}}px;',
+				    '{{WRAPPER}} .post-list-pagination .btn-prev-post svg, {{WRAPPER}} .post-list-pagination .btn-next-post svg' => 'width: {{SIZE}}px;height: {{SIZE}}px;line-height: {{SIZE}}px;',
 			    ],
 		    ]
 	    );
@@ -1113,7 +1113,9 @@ class Post_List extends Widget_Base
                 'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .post-list-pagination .btn-next-post:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .post-list-pagination .btn-next-post:hover svg' => 'fill: {{VALUE}}',
                     '{{WRAPPER}} .post-list-pagination .btn-prev-post:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .post-list-pagination .btn-prev-post:hover svg' => 'fill: {{VALUE}}',
                 ],
             ]
         );

@@ -24,12 +24,10 @@ use Essential_Addons_Elementor\Pro\Classes\Helper;
                     <img alt="" src="<?php echo \Elementor\Utils::get_placeholder_image_src(); ?>"/>
                 <?php endif; ?>
 
-                <?php if($settings['show_price'] == 'true') :
-                    echo $legacy_meta['sfwd-courses_course_price'];
-                    ?>
+                <?php if($settings['show_price'] == 'true') : ?>
                 <div class="card-price">
                     <?php
-                    if($legacy_meta['sfwd-courses_course_price']){
+                    if( isset( $legacy_meta['sfwd-courses_course_price'] ) ){
                         echo $legacy_meta['sfwd-courses_course_price'];
                     } elseif($settings['change_free_price_text'] == 'true' && !empty($settings['free_price_text'])) {
                         echo $settings['free_price_text'];
